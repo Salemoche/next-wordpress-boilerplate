@@ -37,6 +37,7 @@ const NavigationComponent = ({ mainMenu }) => {
                 animate={{ opacity: (deviceDetector.size === 'medium'|| deviceDetector.size === 'small' || deviceDetector.size === 'extra-small') && !menuOpen ? 0 : 1 }}
                 transition={{ duration: .1 }}
             >
+                <Link key="/3d" href="/3d">3D Playground</Link>
                 { menuItems.map( menuItem => <Link key={ menuItem.path || '/' } href={ menuItem.path || '/' }>{ menuItem.label }</Link>) }
             </motion.nav>
             { (deviceDetector.size === 'medium'|| deviceDetector.size === 'small' || deviceDetector.size === 'extra-small') &&
