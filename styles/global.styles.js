@@ -55,7 +55,7 @@ const GlobalStyles = createGlobalStyle`
         margin: 0;
         width: 100vw;
         overflow-x: hidden;
-        font-size: ${ theme.fontSizeM }px;
+        font-size: ${ theme.fontSizeS }px;
         font-family: ${ theme.fontFamilyDefault };
         color: ${ theme.colorBlack };
     }
@@ -83,12 +83,56 @@ const GlobalStyles = createGlobalStyle`
         margin: 0;
     }
 
+    h1 {
+        font-size: ${ theme.fontSizeXXL }px;
+        margin-bottom: ${ theme.spaceS }px;
+    }
+
+    h2 {
+        font-size: ${ theme.fontSizeXXL }px;
+        margin-bottom: ${ theme.spaceS }px;
+    }
+
+    h3 {
+        font-size: ${ theme.fontSizeXL }px;
+        margin-bottom: ${ theme.spaceXS }px;
+    }
+
+    h4 {
+        font-size: ${ theme.fontSizeL }px;
+        margin-bottom: ${ theme.spaceXS }px;
+    }
+
+    h5 {
+        font-size: ${ theme.fontSizeM }px;
+        margin-bottom: ${ theme.spaceXXS }px;
+    }
+
+    h6 {
+        font-size: ${ theme.fontSizeS }px;
+    }
+
     p {
         margin: 0;
+        margin-bottom: ${ theme.spaceS }px;
+
+        &:last-of-type {
+            margin-bottom: 0;
+        }
     }
 
     a {
         color: ${ theme.colorBlack };
+    }
+
+    ul {
+        padding: 0;
+        margin: 0;
+        list-style-type: none;
+    }
+
+    li {
+        margin: 0;
     }
 
 `
