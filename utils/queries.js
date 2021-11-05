@@ -1,5 +1,27 @@
 import { gql } from "@apollo/client";
 
+export const SITE_QUERY = () => {
+    return gql `
+    query MyQuery {
+        menus {
+            nodes {
+                slug
+                menuItems {
+                    nodes {
+                        path
+                        label
+                        childItems {
+                            nodes {
+                                label
+                                path
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }`
+}
 export const PAGE_QUERY = () => {
     return gql `
     query MyQuery {
@@ -57,3 +79,30 @@ export const POSTS_QUERY = () => {
         }
     }`
 }
+export const POST_QUERY = ( slug ) => {
+    return gql`
+    query MyQuery {
+        post(id: "${slug}", idType: SLUG) {
+            id
+            title
+            slug
+        }
+        menus {
+            nodes {
+                slug
+                menuItems {
+                    nodes {
+                        path
+                        label
+                        childItems {
+                            nodes {
+                                label
+                                path
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }`
+} 

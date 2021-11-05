@@ -1,5 +1,6 @@
 const theme = {
-    breakpoints: [ 320, 414, 768, 1024, 1440 ],
+    breakpoints: [ 320, 414, 768, 1024, 1440, 1800 ],
+    breakpointXXL: 0,
     breakpointXL: 0,
     breakpointL: 0,
     breakpointM: 0,
@@ -16,7 +17,12 @@ const theme = {
     fontSizeM: 0,
     fontSizeL: 0,
     fontSizeXL: 0,
+    fontFamilies: [ 'Lato' ],
+    fontFamilyDefault: '',
     lineHeights: [ 0.85, 1, 1.2, 1.5, 2 ],
+    contentWidths: [ 600, 1260 ],
+    contentWidthL: 0,
+    contentWidthS: 0,
     colors: [ 'black', '#8E8E8E' ],
     transition: [ '.1s', '.3s', '.6s', '1s'],
     zIndices: {
@@ -36,10 +42,14 @@ theme.fontSizeS = theme.fontSizes[0];
 theme.fontSizeM = theme.fontSizes[1];
 theme.fontSizeL = theme.fontSizes[2];
 theme.fontSizeXL = theme.fontSizes[3];
+theme.fontFamilyDefault = theme.fontFamilies[0];
+theme.breakpointXXL = theme.breakpoints[5]
 theme.breakpointXL = theme.breakpoints[4]
 theme.breakpointL = theme.breakpoints[3]
 theme.breakpointM = theme.breakpoints[2]
 theme.breakpointS = theme.breakpoints[1]
 theme.breakpointXS = theme.breakpoints[0]
+theme.contentWidthL = theme.contentWidths[1]
+theme.contentWidthS = theme.contentWidths[0]
 
 export default theme

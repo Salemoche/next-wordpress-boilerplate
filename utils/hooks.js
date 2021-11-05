@@ -18,23 +18,31 @@ export const useDeviceDetector = () => {
         let mode;
 
         switch (true) {
+            case width > theme.breakpointXXL:
+                size = 'oversize'
+                mode = 'desktop'
+                break;
             case width > theme.breakpointXL:
-                size = 'extra-large'
+                size = 'extra-extra-large'
                 mode = 'desktop'
                 break;
             case width > theme.breakpointL:
-                size = 'large'
+                size = 'extra-large'
                 mode = 'desktop'
                 break;
             case width > theme.breakpointM:
-                size = 'medium'
+                size = 'large'
                 mode = 'desktop'
                 break;
             case width > theme.breakpointS:
+                size = 'medium'
+                mode = 'tablet'
+                break;
+            case width > theme.breakpointXS:
                 size = 'small'
                 mode = 'mobile'
                 break;
-            case width > theme.breakpointXS:
+            case width < theme.breakpointXS:
                 size = 'extra-small'
                 mode = 'mobile'
                 break;

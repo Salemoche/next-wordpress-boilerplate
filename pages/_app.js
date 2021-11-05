@@ -18,6 +18,7 @@ function MyApp({ Component, pageProps }) {
 
     useEffect(() => {
         defaultStore.deviceDetector = deviceDetector;
+        console.log(deviceDetector)
     }, [ deviceDetector ])
 
     return (
