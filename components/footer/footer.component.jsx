@@ -16,7 +16,7 @@ const FooterComponent = () => {
 
     return (
         <FooterStyles ref={ ref } className="footer">
-            ©2021 – created by <a href="https://inter-action.design">Salemoche</a>
+            ©2021 – created by <a href="https://inter-action.design" target="_blank" >Salemoche</a>
         </FooterStyles>
     )
 }

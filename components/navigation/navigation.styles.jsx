@@ -1,15 +1,20 @@
 import styled, { css } from 'styled-components'
-import { ContentStyles, IconStyles } from '../../styles/global-components.styles';
+import { IconStyles } from '../../styles/global-components.styles';
 
-export const NavigationStyles = styled(ContentStyles)`
+export const NavigationStyles = styled('div')`
 
     position: fixed;
     top: 0;
     left: 0;
+    width: 100vw;
 
     .sm-main-menu {
         display: flex;
         justify-content: space-between;
+        width: ${ props => props.theme.contentWidthL }px;
+        max-width: 100vw;
+        margin: 0 auto;
+        padding: ${ props => props.theme.spaceM }px;
     }
 
     ${ ({ size, menuOpen }) => {

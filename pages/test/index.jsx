@@ -2,19 +2,19 @@
 import { useEffect } from 'react';
 
 // Data
-import { apolloClient } from '../utils/apolloClient';
-import { PAGE_QUERY } from '../utils/queries';
-import { defaultStore } from '../state/store';
+import { apolloClient } from '../../utils/apolloClient';
+import { PAGE_QUERY } from '../../utils/queries';
+import { defaultStore } from '../../state/store';
 import { useSnapshot } from 'valtio';
 
 // Components
-import LayoutComponent from '../components/layout/layout.component';
-import { ContentStyles } from '../styles/global-components.styles';
+import LayoutComponent from '../../components/layout/layout.component';
+import { ContentStyles } from '../../styles/global-components.styles';
 
 // Animation
 import { motion } from 'framer-motion';
 
-export default function Home({ content, mainMenu, footerMenu }) {
+export default function TestPage({ content, mainMenu, footerMenu }) {
 
     const { deviceDetector } = useSnapshot( defaultStore );
     const { title } = content
@@ -25,7 +25,7 @@ export default function Home({ content, mainMenu, footerMenu }) {
 
     return (
         <motion.div 
-            key="sm-home"
+            key="sm-page"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -35,7 +35,6 @@ export default function Home({ content, mainMenu, footerMenu }) {
                 <section>
                     <ContentStyles className="sm-content">
                         <h1>Hello, world, this is the { title } page</h1>
-                        <p> The device size is { deviceDetector.size } </p>
                     </ContentStyles>
                 </section>
             </LayoutComponent>
@@ -51,14 +50,14 @@ export const getStaticProps = async() => {
     });
 
     const pages = result.data.pages.nodes;
-    const homePage = pages.filter( (page) => (page.isFrontPage === true) );
+    const page = pages.filter( (page) => (page.slug === 'test-page') );
     const menus = result.data.menus.nodes;
     const mainMenu = menus.filter( (menu) => (menu.slug === 'main-menu') );
     const footerMenu = menus.filter( (menu) => (menu.slug === 'footer-menu') );
     
     return {
         props: {
-            content: homePage[0],
+            content: page[0],
             mainMenu: mainMenu[0] || {},
             footerMenu: footerMenu[0] || {},
         }

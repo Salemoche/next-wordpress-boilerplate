@@ -23,7 +23,8 @@ const theme = {
     contentWidths: [ 600, 1260 ],
     contentWidthL: 0,
     contentWidthS: 0,
-    colors: [ 'black', '#8E8E8E' ],
+    colors: [ '#333' ],
+    colorBlack: '',
     transition: [ '.1s', '.3s', '.6s', '1s'],
     zIndices: {
         loading: 300,
@@ -51,5 +52,6 @@ theme.breakpointS = theme.breakpoints[1]
 theme.breakpointXS = theme.breakpoints[0]
 theme.contentWidthL = theme.contentWidths[1]
 theme.contentWidthS = theme.contentWidths[0]
+theme.colorBlack = theme.colors[0]
 
 export default theme

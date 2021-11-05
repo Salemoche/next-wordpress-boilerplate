@@ -55,8 +55,9 @@ const GlobalStyles = createGlobalStyle`
         margin: 0;
         width: 100vw;
         overflow-x: hidden;
-        font-size: ${ props => theme.fontSizeM}px;
-        font-family: ${ props => theme.fontFamilyDefault};
+        font-size: ${ theme.fontSizeM }px;
+        font-family: ${ theme.fontFamilyDefault };
+        color: ${ theme.colorBlack };
     }
 
     main {
@@ -84,6 +85,10 @@ const GlobalStyles = createGlobalStyle`
 
     p {
         margin: 0;
+    }
+
+    a {
+        color: ${ theme.colorBlack };
     }
 
 `
