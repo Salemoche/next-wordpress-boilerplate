@@ -20,7 +20,7 @@ import { motion } from 'framer-motion';
 const NavigationComponent = ({ mainMenu }) => {
 
     const ref = useRef();
-    const menuItems = mainMenu.menuItems.nodes;
+    const menuItems = mainMenu?.menuItems?.nodes;
     const { deviceDetector } = useSnapshot( defaultStore );
     const [menuOpen, setMenuOpen] = useState(false);
 
