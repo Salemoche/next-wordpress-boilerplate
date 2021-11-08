@@ -11,9 +11,23 @@ import { motion } from 'framer-motion';
 import LayoutComponent from '../../components/layout/layout.component';
 
 // 3D
-import { Canvas, useFrame } from '@react-three/fiber'
+import { Canvas, useFrame, extend } from '@react-three/fiber'
+import { shaderMaterial } from '@react-three/drei'
+// import { THREE } from 'three'
 import { ContentStyles } from '../../../1_wordpress/styles/global-components.styles';
 import { FiberStyles } from './3d.styles';
+import vertexShader from '../../three/shaders/default/vertex.glsl';
+import fragmentShader from '../../three/shaders/default/fragment.glsl';
+
+const ShaderMaterial = shaderMaterial(
+    {},
+    // vertex shader
+    vertexShader,
+    // fragment shader
+    fragmentShader
+    )
+    
+extend({ ShaderMaterial })
 
 function Box(props) {
     // This reference gives us direct access to the THREE.Mesh object
@@ -33,15 +47,16 @@ function Box(props) {
             onPointerOver={(event) => hover(true)}
             onPointerOut={(event) => hover(false)}>
             <boxGeometry args={[1, 1, 1]} />
-            <meshStandardMaterial color={hovered ? 'hotpink' : 'orange'} />
-      </mesh>
+            {/* <meshStandardMaterial color={hovered ? 'hotpink' : 'orange'} /> */}
+            <shaderMaterial attach="material" color="hotpink" time={1} />
+        </mesh>
     )
 }
-
-export default function Fiber ({ }) {
-
-    return (
-        <motion.div 
+    
+    export default function Fiber ({ }) {
+        
+        return (
+            <motion.div 
             key="sm-fiber"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -61,3 +76,10 @@ export default function Fiber ({ }) {
         </motion.div>
     )
 }
+
+export const getStaticProps = async ( context ) => {
+    
+    return {
+        props: { }
+    }
+}  
