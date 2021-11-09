@@ -19,7 +19,7 @@ export function SphereComponenent (props) {
 
     useFrame((state, delta) => {
         shaderRef.current.uTime = state.clock.elapsedTime;
-        // shaderRef.current.uHovered = hovered;
+        
         let targetNoiseAmpValue;
         let targetNoiseSpeedValue;
     
@@ -27,7 +27,7 @@ export function SphereComponenent (props) {
             targetNoiseAmpValue = 2.0;
             targetNoiseSpeedValue = 0.4;
         } else {
-            targetNoiseAmpValue = 0.4;
+            targetNoiseAmpValue = 0.6;
             targetNoiseSpeedValue = 0.2;
         }
     
@@ -35,28 +35,6 @@ export function SphereComponenent (props) {
         shaderRef.current.uNoiseSpeed = THREE.MathUtils.lerp(shaderRef.current.uNoiseSpeed, targetNoiseSpeedValue, 0.05);
         console.log(shaderRef.current.uNoiseAmp, shaderRef.current.uNoiseSpeed);
     })
-
-    useEffect(() => {
-        // let targetNoiseAmpValue;
-    
-        // if (setIsHovered == true) {
-        //     targetNoiseAmpValue = 10.0;
-        // } else {
-        //     targetNoiseAmpValue = 0.4;
-        // }
-    
-        // shaderRef.current.uNoiseAmp = THREE.MathUtils.lerp(shaderRef.current.uNoiseAmp, targetNoiseAmpValue, 0.01);
-        // console.log(shaderRef.current.uNoiseAmp);
-
-    }, [ shaderRef, isHovered]) 
-
-    // const interpolate = ( callback ) => {
-    //     // THREE.MathUtils.lerp(uniforms.mouseIntersects.value, targetValue, 0.1);
-    //     let test = THREE.MathUtils.lerp(0, 100, 0.1);
-    //     // callback(test);
-    //     console.log('lerping', test);
-    //     // callback(test);
-    // }
 
     return (
         <Suspense>
