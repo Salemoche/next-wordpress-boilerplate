@@ -19,7 +19,7 @@ export function SphereComponenent (props) {
 
     useFrame((state, delta) => {
         shaderRef.current.uTime = state.clock.elapsedTime;
-        
+
         let targetNoiseAmpValue;
         let targetNoiseSpeedValue;
     
@@ -33,7 +33,6 @@ export function SphereComponenent (props) {
     
         shaderRef.current.uNoiseAmp = THREE.MathUtils.lerp(shaderRef.current.uNoiseAmp, targetNoiseAmpValue, 0.2);
         shaderRef.current.uNoiseSpeed = THREE.MathUtils.lerp(shaderRef.current.uNoiseSpeed, targetNoiseSpeedValue, 0.05);
-        console.log(shaderRef.current.uNoiseAmp, shaderRef.current.uNoiseSpeed);
     })
 
     return (
