@@ -3,7 +3,7 @@ import React, { useRef, useState, Suspense } from 'react'
 
 // 3D
 import { useFrame, extend } from '@react-three/fiber'
-import { TestShaderMaterial } from '../../../three/materials/testShaderMaterial';
+import { TestShaderMaterial } from '../../../three/materials/materials';
 
 export function BoxComponenent (props) {
 

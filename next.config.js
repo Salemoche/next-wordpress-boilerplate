@@ -6,9 +6,19 @@ module.exports = {
             loader: "svg-inline-loader",
         });
 
+        // config.module.rules.push({
+        //     test: /\.(glsl|vs|fs)$/,
+        //     loader: 'shader-loader',
+        // });
+
         config.module.rules.push({
-            test: /\.(glsl|vs|fs)$/,
-            loader: 'shader-loader',
+            test: /\.(glsl|vs|fs|vert|frag)$/,
+            loader: 'raw-loader',
+        });
+
+        config.module.rules.push({
+            test: /\.(glsl|vs|fs|vert|frag)$/,
+            loader: 'glslify-loader',
         });
 
         if (!isServer) {

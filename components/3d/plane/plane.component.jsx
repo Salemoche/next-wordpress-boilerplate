@@ -3,7 +3,8 @@ import React, { useRef, useState, Suspense } from 'react'
 
 // 3D
 import { useFrame, extend } from '@react-three/fiber'
-import { TestShaderMaterial } from '../../../three/materials/testShaderMaterial';
+import { TestShaderMaterial } from '../../../three/materials/materials';
+import { glslify } from 'glslify'
 
 export function PlaneComponenent (props) {
 
@@ -11,9 +12,6 @@ export function PlaneComponenent (props) {
     const meshRef = useRef()
 
     extend({ TestShaderMaterial })
-    
-    const [hovered, hover] = useState(false)
-    const [clicked, click] = useState(false)
 
     useFrame((state, delta) => {
         shaderRef.current.uTime = state.clock.elapsedTime;
@@ -23,15 +21,11 @@ export function PlaneComponenent (props) {
         <Suspense>
             <mesh
                 {...props}
-                scale={clicked ? 1.5 : 1}
-                onClick={(event) => click(!clicked)}
-                onPointerOver={(event) => hover(true)}
-                onPointerOut={(event) => hover(false)}
                 ref={meshRef}
             >
-                <planeGeometry args={[1, 1, 16, 16]} />
+                <planeGeometry args={[3, 3, 32, 32]} />
                 {/* <meshStandardMaterial color={hovered ? 'hotpink' : 'orange'} /> */}
-                <testShaderMaterial attach="material" ref={shaderRef} />
+                <testShaderMaterial attach="material" ref={shaderRef} wireframe={true} />
             </mesh>
         </Suspense>
     )
