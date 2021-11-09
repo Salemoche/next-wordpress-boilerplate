@@ -9,24 +9,18 @@ import imageNoiseFragmentShader from '../shaders/image-noise/fragment.glsl';
 
 export const TestShaderMaterial = shaderMaterial(
     { uColor: new THREE.Color( 0.8, 0, 0.7 ), uTime: 0.4 },
-    // vertex shader
     testVertexShader,
-    // fragment shader
     testFragmentShader
 )
 
 export const NoiseShaderMaterial = shaderMaterial(
     { uColor: new THREE.Color( 0.8, 0, 0.7 ), uTime: 0.4, uNoiseAmp: 0.4, uNoiseSpeed: 0 },
-    // vertex shader
     noiseVertexShader,
-    // fragment shader
     noiseFragmentShader
 )
 
 export const ImageNoiseShaderMaterial = shaderMaterial(
-    { uColor: new THREE.Color( 0.8, 0, 0.7 ), uTime: 0.4, uNoiseAmp: 0.4, uNoiseSpeed: 0.2 },
-    // vertex shader
+    { uColor: new THREE.Color( 0.8, 0, 0.7 ), uTime: 0.4, uNoiseAmp: 0.4, uNoiseSpeed: 0.2, uTexture: new THREE.Texture() },
     imageNoiseVertexShader,
-    // fragment shader
     imageNoiseFragmentShader
 )

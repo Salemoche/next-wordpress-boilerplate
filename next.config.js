@@ -12,6 +12,11 @@ module.exports = {
         // });
 
         config.module.rules.push({
+            test: /\.(png|jpe?g|gif)$/i,
+            loader: 'file-loader',
+        });
+
+        config.module.rules.push({
             test: /\.(glsl|vs|fs|vert|frag)$/,
             loader: 'raw-loader',
         });

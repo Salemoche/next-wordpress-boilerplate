@@ -7,8 +7,10 @@ uniform float uTime;
 uniform float uHovered;
 uniform float uNoiseAmp;
 uniform float uNoiseSpeed;
+uniform sampler2D uTexture;
 
 varying vec2 vUv;
+varying float vWave;
 
 
 void main() {
@@ -25,6 +27,7 @@ void main() {
     vec3 noisePos = vec3( pos.x * noiseFreq + noiseSpeed, pos.y, pos.z );
 
     pos.z += snoise3(noisePos) * uNoiseAmp;
+    vWave = pos.z;
 
     gl_Position = projectionMatrix * viewMatrix * modelMatrix * vec4( pos, 1.0 );
 }

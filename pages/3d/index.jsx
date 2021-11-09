@@ -35,8 +35,8 @@ export default function Fiber ({ }) {
                         <ambientLight />
                         <pointLight position={[10, 10, 10]} />
                         {/* <BoxComponenent position={[-1.2, 0, 0]} randomSeed={Math.random()}/> */}
-                        {/* <PlaneComponenent position={[0, 0, 0]} /> */}
-                        <SphereComponenent position={[0, 0, 0]} />
+                        <PlaneComponenent position={[0, 0, 0]} />
+                        {/* <SphereComponenent position={[0, 0, 0]} /> */}
                         <OrbitControls autoRotate={false} autoRotateSpeed={10} enableZoom={false} enablePan={false} />
                     </Canvas>
                 </FiberStyles>
