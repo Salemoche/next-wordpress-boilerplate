@@ -26,7 +26,7 @@ const NavigationComponent = ({ mainMenu }) => {
 
     useEffect(() => {
         defaultStore.headerHeight = ref.current.offsetHeight || 0;
-        console.log(defaultStore.headerHeight)
+        console.log(defaultStore)
     }, [ ref ])
 
     return (

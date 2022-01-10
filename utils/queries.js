@@ -22,6 +22,7 @@ export const SITE_QUERY = () => {
         }
     }`
 }
+
 export const PAGE_QUERY = () => {
     return gql `
     query MyQuery {
@@ -31,6 +32,46 @@ export const PAGE_QUERY = () => {
                 title
                 slug
                 isFrontPage
+                excerpt
+                seo {
+                    canonical
+                    cornerstone
+                    focuskw
+                    fullHead
+                    metaDesc
+                    metaKeywords
+                    metaRobotsNofollow
+                    metaRobotsNoindex
+                    opengraphAuthor
+                    opengraphDescription
+                    opengraphModifiedTime
+                    opengraphPublishedTime
+                    opengraphPublisher
+                    opengraphSiteName
+                    opengraphTitle
+                    opengraphType
+                    opengraphUrl
+                    readingTime
+                    title
+                    twitterDescription
+                    twitterTitle
+                }
+                featuredImage {
+                    node {
+                        altText
+                        mediaItemUrl
+                        mediaDetails {
+                            height
+                            width
+                            sizes {
+                                sourceUrl
+                                name
+                                height
+                                width
+                            }
+                        }
+                    }
+                }
             }
         }
         menus {
@@ -53,32 +94,32 @@ export const PAGE_QUERY = () => {
     }`
 }
 
-export const PAGES_QUERY = () => {
-    return gql `
-    query MyQuery {
-        pages {
-            nodes {
-                id
-                title
-                slug
-                isFrontPage
-            }
-        }
-    }`
-}
+// export const PAGES_QUERY = () => {
+//     return gql `
+//     query MyQuery {
+//         pages {
+//             nodes {
+//                 id
+//                 title
+//                 slug
+//                 isFrontPage
+//                 featuredImage {
+//                     node {
+//                         altText
+//                         mediaItemUrl
+//                         mediaDetails {
+//                             sizes {
+//                                 sourceUrl
+//                                 name
+//                             }
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//     }`
+// }
 
-export const POSTS_QUERY = () => {
-    return gql `
-    query MyQuery {
-        posts(last: 1000) {
-            nodes {
-                id
-                title
-                slug
-            }
-        }
-    }`
-}
 export const POST_QUERY = ( slug ) => {
     return gql`
     query MyQuery {
@@ -86,6 +127,42 @@ export const POST_QUERY = ( slug ) => {
             id
             title
             slug
+            excerpt
+            seo {
+                    canonical
+                    cornerstone
+                    focuskw
+                    fullHead
+                    metaDesc
+                    metaKeywords
+                    metaRobotsNofollow
+                    metaRobotsNoindex
+                    opengraphAuthor
+                    opengraphDescription
+                    opengraphModifiedTime
+                    opengraphPublishedTime
+                    opengraphPublisher
+                    opengraphSiteName
+                    opengraphTitle
+                    opengraphType
+                    opengraphUrl
+                    readingTime
+                    title
+                    twitterDescription
+                    twitterTitle
+            }
+            featuredImage {
+                node {
+                    altText
+                    mediaItemUrl
+                    mediaDetails {
+                        sizes {
+                            sourceUrl
+                            name
+                        }
+                    }
+                }
+            }
         }
         menus {
             nodes {
@@ -106,3 +183,56 @@ export const POST_QUERY = ( slug ) => {
         }
     }`
 } 
+
+export const POSTS_QUERY = () => {
+    return gql `
+    query MyQuery {
+        posts(last: 1000) {
+            nodes {
+                id
+                title
+                slug
+                excerpt
+                seo {
+                    canonical
+                    cornerstone
+                    focuskw
+                    fullHead
+                    metaDesc
+                    metaKeywords
+                    metaRobotsNofollow
+                    metaRobotsNoindex
+                    opengraphAuthor
+                    opengraphDescription
+                    opengraphModifiedTime
+                    opengraphPublishedTime
+                    opengraphPublisher
+                    opengraphSiteName
+                    opengraphTitle
+                    opengraphType
+                    opengraphUrl
+                    readingTime
+                    title
+                    twitterDescription
+                    twitterTitle
+                }
+                featuredImage {
+                    node {
+                        altText
+                        mediaItemUrl
+                        mediaDetails {
+                            height
+                            width
+                            sizes {
+                                sourceUrl
+                                name
+                                height
+                                width
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }`
+}

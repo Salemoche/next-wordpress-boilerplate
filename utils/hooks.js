@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
 import DeviceDetector from "device-detector-js";
 import theme from '../styles/theme';
+import { getWordpressImage } from './helpers';
 
 export const useDeviceDetector = () => {
 
@@ -161,5 +162,21 @@ export const useMousePositionOnScreen = ( callback ) => {
         };
 
         callback( mousePosition );
+    }
+}
+
+export const useSiteHeader = ( baseUrl, siteName, pageContent ) => {
+
+    const { title, excerpt } = pageContent
+    const description = pageContent.seo.opengraphDescription || ( excerpt && excerpt.replace(/(&lt;([^>]+)>)/gi, "")) || 'some description';
+    const imageUrl = getWordpressImage( pageContent.featuredImage )?.large?.sourceUrl || '';
+    const url = baseUrl + pageContent.slug
+
+    return {
+        siteName,
+        title,
+        description,
+        imageUrl,
+        url
     }
 }

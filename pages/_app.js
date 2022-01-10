@@ -13,13 +13,23 @@ import theme from '../styles/theme';
 import GlobalStyles from '../styles/global.styles.js';
 
 function MyApp({ Component, pageProps }) {
-    const route = useRouter().route
+    const router = useRouter()
     const deviceDetector = useDeviceDetector();
 
     useEffect(() => {
         defaultStore.deviceDetector = deviceDetector;
-        console.log(deviceDetector)
     }, [ deviceDetector ])
+
+    useEffect(() => {
+        defaultStore.router = router.route;
+        defaultStore.currentPage.route = router.route;
+    }, [ router ])
+
+    useEffect(() => {
+        console.log('=================== State change ===================')
+        console.log(defaultStore)
+    }, [ defaultStore ])
+
 
     return (
         <ThemeProvider theme={ theme }>
@@ -28,7 +38,7 @@ function MyApp({ Component, pageProps }) {
                 exitBeforeEnter={true}
                 initial={false}
             >
-                <Component {...pageProps} key={route}/>
+                <Component {...pageProps} key={router.route}/>
             </AnimatePresence>
         </ThemeProvider>
         

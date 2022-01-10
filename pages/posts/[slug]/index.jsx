@@ -4,6 +4,7 @@ import {useRouter} from 'next/router'
 // Data
 import { apolloClient } from '../../../utils/apolloClient';
 import { POSTS_QUERY, POST_QUERY } from '../../../utils/queries';
+import { defaultStore } from '../../../state/store';
 
 // Components
 import LayoutComponent from '../../../components/layout/layout.component';
@@ -12,13 +13,23 @@ import { ContentStyles } from '../../../styles/global-components.styles';
 // Animation
 import { motion } from 'framer-motion';
 
-const ProjectPage = ({ post, mainMenu, footerMenu }) => {
+const ProjectPage = ({ post, mainMenu, footerMenu, baseUrl, siteName }) => {
 
     const { 
         title,
         slug,
         id
     } = post;
+
+    // Set site state
+
+    useEffect(() => {
+        defaultStore.base.siteName = siteName
+        defaultStore.currentPage = {
+            url: baseUrl + slug,
+            title
+        }
+    }, [])
 
     return (
         <motion.div 
@@ -28,7 +39,13 @@ const ProjectPage = ({ post, mainMenu, footerMenu }) => {
             exit={{ opacity: 0 }}
             transition={{ duration: .6 }}
         >
-            <LayoutComponent mainMenu={ mainMenu || {} } footerMenu={ footerMenu || {} }>
+            <LayoutComponent 
+                mainMenu={ mainMenu || {} }
+                footerMenu={ footerMenu || {} }
+                content={ post }
+                baseUrl={ baseUrl }
+                siteName={ siteName }
+            >
                 <ContentStyles>
                     <h1>Hello, world, this is the { title } Post</h1>
                 </ContentStyles>
@@ -41,6 +58,8 @@ export default ProjectPage
 
 export const getStaticProps = async ( context ) => {
 
+    const baseUrl = process.env.BASE_URL;
+    const siteName = process.env.SITE_NAME;
     const slug = context.params.slug
 
     const result = await apolloClient
@@ -53,13 +72,15 @@ export const getStaticProps = async ( context ) => {
     const mainMenu = menus?.filter( (menu) => (menu.slug === 'main-menu') );
     const footerMenu = menus?.filter( (menu) => (menu.slug === 'footer-menu') );
 
-    console.log(menus, mainMenu)
+    console.log(post)
 
     return {
         props: {
             post,
             mainMenu: mainMenu[0] || {},
             footerMenu: footerMenu[0] || {},
+            baseUrl,
+            siteName
         }
     }
 }

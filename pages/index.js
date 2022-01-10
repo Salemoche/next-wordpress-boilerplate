@@ -14,14 +14,24 @@ import { ContentStyles } from '../styles/global-components.styles';
 // Animation
 import { motion } from 'framer-motion';
 
-export default function Home({ content, mainMenu, footerMenu }) {
+export default function Home({ content, mainMenu, footerMenu, baseUrl, siteName }) {
 
     const { deviceDetector } = useSnapshot( defaultStore );
-    const { title } = content
+    const { title } = content;
+
+    // Set site state
 
     useEffect(() => {
-        // console.log( content )
+        defaultStore.base.siteName = siteName
+        defaultStore.currentPage = {
+            url: baseUrl,
+            title
+        }
     }, [])
+
+    useEffect(() => {
+        // console.log( env )
+    }, [ content ])
 
     return (
         <motion.div 
@@ -31,7 +41,13 @@ export default function Home({ content, mainMenu, footerMenu }) {
             exit={{ opacity: 0 }}
             transition={{ duration: .6 }}
         >
-            <LayoutComponent mainMenu={ mainMenu }>
+            <LayoutComponent 
+                mainMenu={ mainMenu }
+                baseUrl={ baseUrl }
+                siteName={ siteName }
+                content={ content }
+                // fullHead={ fullHead } // SM-TODO: SEO
+            >
                 <section>
                     <ContentStyles className="sm-content">
                         <h1>Hello, world, this is the { title } page</h1>
@@ -45,6 +61,9 @@ export default function Home({ content, mainMenu, footerMenu }) {
 
 
 export const getStaticProps = async() => {
+    
+    const baseUrl = process.env.BASE_URL;
+    const siteName = process.env.SITE_NAME;
 
     const result = await apolloClient.query({
         query: PAGE_QUERY()
@@ -61,6 +80,8 @@ export const getStaticProps = async() => {
             content: homePage[0],
             mainMenu: mainMenu[0] || {},
             footerMenu: footerMenu[0] || {},
+            baseUrl,
+            siteName
         }
     }
 }  
