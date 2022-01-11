@@ -30,7 +30,7 @@ const NavigationComponent = ({ mainMenu }) => {
     }, [ ref ])
 
     return (
-        <NavigationStyles ref={ ref } className="sm-navigation" size={ deviceDetector.size } menuOpen={ menuOpen }>
+        <NavigationStyles ref={ ref } className="sm-navigation" device={ deviceDetector } menuOpen={ menuOpen }>
             <motion.nav
                 className="sm-menu sm-main-menu"
                 initial={{ opacity: 0 }}

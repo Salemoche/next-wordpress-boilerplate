@@ -17,8 +17,8 @@ export const NavigationStyles = styled('div')`
         padding: ${ props => props.theme.spaceM }px;
     }
 
-    ${ ({ size, menuOpen }) => {
-        if ( size === 'medium' || size === 'small' || size === 'extra-small' ) {
+    ${ ({ device, menuOpen }) => {
+        if ( device.mode === 'tablet' || device.mode === 'mobile' ) {
             return css`
 
                 .sm-main-menu {

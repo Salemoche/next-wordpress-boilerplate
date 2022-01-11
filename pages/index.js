@@ -23,7 +23,7 @@ export default function Home({ content, mainMenu, footerMenu, baseUrl, siteName 
 
     useEffect(() => {
         defaultStore.base.siteName = siteName
-        defaultStore.currentPage = {
+        defaultStore.current = {
             url: baseUrl,
             title
         }
@@ -61,7 +61,7 @@ export default function Home({ content, mainMenu, footerMenu, baseUrl, siteName 
 
 
 export const getStaticProps = async() => {
-    
+
     const baseUrl = process.env.BASE_URL;
     const siteName = process.env.SITE_NAME;
 

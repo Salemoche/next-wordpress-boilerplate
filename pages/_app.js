@@ -22,7 +22,7 @@ function MyApp({ Component, pageProps }) {
 
     useEffect(() => {
         defaultStore.router = router.route;
-        defaultStore.currentPage.route = router.route;
+        defaultStore.current.route = router.route;
     }, [ router ])
 
     useEffect(() => {

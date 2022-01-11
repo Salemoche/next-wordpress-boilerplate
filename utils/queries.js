@@ -33,6 +33,7 @@ export const PAGE_QUERY = () => {
                 slug
                 isFrontPage
                 excerpt
+                content
                 seo {
                     canonical
                     cornerstone
@@ -128,6 +129,7 @@ export const POST_QUERY = ( slug ) => {
             title
             slug
             excerpt
+            content
             seo {
                     canonical
                     cornerstone
@@ -192,46 +194,6 @@ export const POSTS_QUERY = () => {
                 id
                 title
                 slug
-                excerpt
-                seo {
-                    canonical
-                    cornerstone
-                    focuskw
-                    fullHead
-                    metaDesc
-                    metaKeywords
-                    metaRobotsNofollow
-                    metaRobotsNoindex
-                    opengraphAuthor
-                    opengraphDescription
-                    opengraphModifiedTime
-                    opengraphPublishedTime
-                    opengraphPublisher
-                    opengraphSiteName
-                    opengraphTitle
-                    opengraphType
-                    opengraphUrl
-                    readingTime
-                    title
-                    twitterDescription
-                    twitterTitle
-                }
-                featuredImage {
-                    node {
-                        altText
-                        mediaItemUrl
-                        mediaDetails {
-                            height
-                            width
-                            sizes {
-                                sourceUrl
-                                name
-                                height
-                                width
-                            }
-                        }
-                    }
-                }
             }
         }
     }`

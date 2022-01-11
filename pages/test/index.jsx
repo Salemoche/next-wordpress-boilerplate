@@ -24,14 +24,14 @@ export default function TestPage({ content, mainMenu, footerMenu, baseUrl, siteN
 
     useEffect(() => {
         defaultStore.base.siteName = siteName
-        defaultStore.currentPage = {
+        defaultStore.current = {
             url: baseUrl,
             title
         }
     }, [])
 
     useEffect(() => {
-        // console.log( content )
+        console.log( baseUrl, siteName )
     }, [])
 
     return (

@@ -8,8 +8,8 @@ export const defaultStore = proxy({
     base: {
         siteName: '',
     },
-    currentPage: {
-        url: ''
+    current: {
+        url: '',
     }
 
 })
