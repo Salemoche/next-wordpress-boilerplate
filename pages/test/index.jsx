@@ -36,7 +36,7 @@ export default function TestPage({ content, mainMenu, footerMenu, baseUrl, siteN
 
     return (
         <motion.div 
-            key="sm-page"
+            key="bs-page"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -50,8 +50,9 @@ export default function TestPage({ content, mainMenu, footerMenu, baseUrl, siteN
                 // fullHead={ fullHead } // SM-TODO: SEO
             >
                 <section>
-                    <ContentStyles className="sm-content">
+                    <ContentStyles className="bs-content">
                         <h1>Hello, world, this is the { title } page</h1>
+                        <div className="bs-content__content" dangerouslySetInnerHTML={{ __html: content.content }}></div>
                     </ContentStyles>
                 </section>
             </LayoutComponent>

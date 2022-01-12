@@ -33,7 +33,7 @@ const ProjectPage = ({ post, mainMenu, footerMenu, baseUrl, siteName }) => {
 
     return (
         <motion.div 
-            key="sm-post"
+            key="bs-post"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

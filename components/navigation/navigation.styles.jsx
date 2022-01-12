@@ -8,7 +8,7 @@ export const NavigationStyles = styled('div')`
     left: 0;
     width: 100vw;
 
-    .sm-main-menu {
+    .bs-main-menu {
         display: flex;
         justify-content: space-between;
         width: ${ props => props.theme.contentWidthL }px;
@@ -21,7 +21,7 @@ export const NavigationStyles = styled('div')`
         if ( device.mode === 'tablet' || device.mode === 'mobile' ) {
             return css`
 
-                .sm-main-menu {
+                .bs-main-menu {
                     width: 100vw;
                     height: 100vh;
                     left: 0;
