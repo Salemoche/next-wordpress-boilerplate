@@ -128,12 +128,36 @@ const GlobalStyles = createGlobalStyle`
     ul {
         padding: 0;
         margin: 0;
-        list-style-type: none;
     }
 
     li {
         margin: 0;
     }
+
+    figure {
+        margin: 0;
+    }
+    
+    img {
+        height: auto;
+        max-width: 100%;
+    }
+
+    button,
+    input[type=submit],
+    .button,
+    .wp-block-file__button {
+        background: black;
+        color: white;
+        border-radius: ${ theme.borderRadiusXS };
+        padding: ${ theme.spaceS }px;
+        text-decoration: none;
+    }
+    
+    /**========================
+    *	Typography
+    *========================*/
+    
 
 `
 export default GlobalStyles;

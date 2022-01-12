@@ -52,7 +52,7 @@ export default function TestPage({ content, mainMenu, footerMenu, baseUrl, siteN
                 <section>
                     <ContentStyles className="bs-content">
                         <h1>Hello, world, this is the { title } page</h1>
-                        <div className="bs-content__content" dangerouslySetInnerHTML={{ __html: content.content }}></div>
+                        <div className="bs-wp-content" dangerouslySetInnerHTML={{ __html: content.content }}></div>
                     </ContentStyles>
                 </section>
             </LayoutComponent>

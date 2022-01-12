@@ -12,7 +12,8 @@ const theme = {
         navigation: 200,
         infoButton: 100,
         drop: 5,
-    }
+    },
+    borderRadii: [ '2px', '4px', '8px', '16px', '50%' ],
 }
 
 theme.spaceXXS = theme.space[1];
@@ -36,5 +37,9 @@ theme.breakpointXS = theme.breakpoints[0]
 theme.contentWidthL = theme.contentWidths[1]
 theme.contentWidthS = theme.contentWidths[0]
 theme.colorBlack = theme.colors[0]
+theme.borderRadiusXS = theme.borderRadii[0];
+theme.borderRadiusS = theme.borderRadii[1];
+theme.borderRadiusM = theme.borderRadii[2];
+theme.borderRadiusL = theme.borderRadii[3];
 
 export default theme
