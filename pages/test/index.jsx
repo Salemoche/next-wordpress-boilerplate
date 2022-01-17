@@ -9,15 +9,18 @@ import { useSnapshot } from 'valtio';
 
 // Components
 import LayoutComponent from '../../components/layout/layout.component';
-import { ContentStyles } from '../../styles/global-components.styles';
+
+// Styling
+import { ContentStyles, WPBlockStyles } from '../../styles/global-components.styles';
 
 // Animation
 import { motion } from 'framer-motion';
+import { getWordpressBlock } from '../../utils/helpers';
 
 export default function TestPage({ content, mainMenu, footerMenu, baseUrl, siteName }) {
 
     const { deviceDetector } = useSnapshot( defaultStore );
-    const { title } = content
+    const { title, blocks } = content
 
 
     // Set site state
@@ -31,8 +34,8 @@ export default function TestPage({ content, mainMenu, footerMenu, baseUrl, siteN
     }, [])
 
     useEffect(() => {
-        console.log( baseUrl, siteName )
-    }, [])
+        console.log( blocks, blocks[0].name )
+    })
 
     return (
         <motion.div 
@@ -52,7 +55,9 @@ export default function TestPage({ content, mainMenu, footerMenu, baseUrl, siteN
                 <section>
                     <ContentStyles className="bs-content">
                         <h1>Hello, world, this is the { title } page</h1>
-                        <div className="bs-wp-content" dangerouslySetInnerHTML={{ __html: content.content }}></div>
+                        { blocks.map( block => (
+                            getWordpressBlock( block )
+                        )) }
                     </ContentStyles>
                 </section>
             </LayoutComponent>

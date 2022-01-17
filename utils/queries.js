@@ -34,6 +34,13 @@ export const PAGE_QUERY = () => {
                 isFrontPage
                 excerpt
                 content
+                blocks {
+                    name
+                    originalContent
+                    saveContent
+                    order
+                    attributesJSON
+                }
                 seo {
                     canonical
                     cornerstone
@@ -130,6 +137,13 @@ export const POST_QUERY = ( slug ) => {
             slug
             excerpt
             content
+            blocks {
+                name
+                originalContent
+                saveContent
+                order
+                attributesJSON
+            }
             seo {
                     canonical
                     cornerstone
