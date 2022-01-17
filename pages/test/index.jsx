@@ -33,10 +33,6 @@ export default function TestPage({ content, mainMenu, footerMenu, baseUrl, siteN
         }
     }, [])
 
-    useEffect(() => {
-        console.log( blocks, blocks[0].name )
-    })
-
     return (
         <motion.div 
             key="bs-page"
@@ -80,8 +76,6 @@ export const getStaticProps = async() => {
     const menus = result.data.menus.nodes;
     const mainMenu = menus.filter( (menu) => (menu.slug === 'main-menu') );
     const footerMenu = menus.filter( (menu) => (menu.slug === 'footer-menu') );
-
-    console.log( pages, page);
     
     return {
         props: {

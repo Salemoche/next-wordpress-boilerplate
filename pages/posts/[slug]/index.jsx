@@ -72,8 +72,6 @@ export const getStaticProps = async ( context ) => {
     const mainMenu = menus?.filter( (menu) => (menu.slug === 'main-menu') );
     const footerMenu = menus?.filter( (menu) => (menu.slug === 'footer-menu') );
 
-    console.log(post)
-
     return {
         props: {
             post,

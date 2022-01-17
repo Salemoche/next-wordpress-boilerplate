@@ -73,7 +73,6 @@ export const useDeviceDetector = () => {
         }
     }, [])
 
-    // console.log('The Device Detector Hook detected device is:', returnDevice )
 
     return returnDevice
 }
@@ -90,8 +89,6 @@ export const useScroll = (ref, callback ) => {
                 fromTop: ref?.current?.scrollTop,
                 fromBottom: ref?.current?.scrollHeight - ref?.current?.scrollTop - window.innerHeight,
             });
-        // console.log( ref.current.scrollTop, ref.current.scrollHeight - ref.current.scrollTop - window.innerHeight );
-        // console.log( scrollData );
     }
 
     // SM-Todo

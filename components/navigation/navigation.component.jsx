@@ -29,10 +29,6 @@ const NavigationComponent = ({ mainMenu }) => {
         defaultStore.headerHeight = ref.current.offsetHeight || 0;
     }, [ ref ])
 
-    useEffect(() => {
-        console.log(defaultStore?.router?.query.slug )
-    })
-
 
     return (
         <NavigationStyles ref={ ref } className="bs-navigation" device={ deviceDetector } menuOpen={ menuOpen }>
