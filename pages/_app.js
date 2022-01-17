@@ -12,6 +12,11 @@ import { ThemeProvider } from 'styled-components'
 import theme from '../styles/theme';
 import GlobalStyles from '../styles/global.styles.js';
 
+
+export function reportWebVitals(metric) {
+    console.log(metric)
+}
+
 function MyApp({ Component, pageProps }) {
     const router = useRouter()
     const deviceDetector = useDeviceDetector();

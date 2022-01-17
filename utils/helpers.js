@@ -29,16 +29,16 @@ export const getWordpressImage = ( imageNode, size ) => {
     return returnImage;
 }
 
-export const getWordpressBlock = ( block ) => {
+export const getWordpressBlock = ( block, i ) => {
 
     const type = block.name.split('/')[0].replace('/', '');
     const category = block.name.split('/')[1];
     const attributes = JSON.parse(block.attributesJSON);
     
     if ( type === 'core' ) {
-        return <WPBlockStyles className={`bs-wp-block bs-wp-block-${block.name.split('/')[1]}`} dangerouslySetInnerHTML={{ __html: block.saveContent }}></WPBlockStyles>
+        return <WPBlockStyles key={`wp-block-${i}`} className={`bs-wp-block bs-wp-block-${block.name.split('/')[1]}`} dangerouslySetInnerHTML={{ __html: block.saveContent }}></WPBlockStyles>
     } else if ( type === 'acf') {
-        return <TestBlockComponent className={`bs-wp-block bs-wp-block-${block.name.split('/')[1]}`} attributes={attributes}></TestBlockComponent>
+        return <TestBlockComponent key={`wp-block-${i}`} className={`bs-wp-block bs-wp-block-${block.name.split('/')[1]}`} attributes={attributes}></TestBlockComponent>
     }
 
 }

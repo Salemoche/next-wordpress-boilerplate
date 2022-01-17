@@ -51,8 +51,8 @@ export default function TestPage({ content, mainMenu, footerMenu, baseUrl, siteN
                 <section>
                     <ContentStyles className="bs-content">
                         <h1>Hello, world, this is the { title } page</h1>
-                        { blocks.map( block => (
-                            getWordpressBlock( block )
+                        { blocks.map( (block, i) => (
+                            getWordpressBlock( block, i )
                         )) }
                     </ContentStyles>
                 </section>
