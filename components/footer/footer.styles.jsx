@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import theme from '../../../1_wordpress/styles/theme'
+import theme from '../../styles/theme'
 // import { ContentStyles } from '../../styles/global-components.styles';
 
 export const FooterStyles = styled('div')`
