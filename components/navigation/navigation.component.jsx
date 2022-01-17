@@ -16,6 +16,7 @@ import CrossIcon from '../../public/img/icons/cross.svg';
 
 // Animation
 import { motion } from 'framer-motion';
+import router from 'next/router';
 
 const NavigationComponent = ({ mainMenu }) => {
 
@@ -26,8 +27,12 @@ const NavigationComponent = ({ mainMenu }) => {
 
     useEffect(() => {
         defaultStore.headerHeight = ref.current.offsetHeight || 0;
-        console.log(defaultStore)
     }, [ ref ])
+
+    useEffect(() => {
+        console.log(defaultStore?.router?.query.slug )
+    })
+
 
     return (
         <NavigationStyles ref={ ref } className="bs-navigation" device={ deviceDetector } menuOpen={ menuOpen }>
@@ -37,7 +42,7 @@ const NavigationComponent = ({ mainMenu }) => {
                 animate={{ opacity: (deviceDetector.size === 'medium'|| deviceDetector.size === 'small' || deviceDetector.size === 'extra-small') && !menuOpen ? 0 : 1 }}
                 transition={{ duration: .1 }}
             >
-                { menuItems.map( menuItem => <Link key={ menuItem.path || '/' } href={ menuItem.path || '/' }>{ menuItem.label }</Link>) }
+                { menuItems.map( menuItem => <Link key={ menuItem.path || '/' } href={ menuItem.path || '/' }><a className={`bs-menu-item${menuItem.path === defaultStore?.router?.pathName ? ' active' : ''}`}>{ menuItem.label }</a></Link>) }
             </motion.nav>
             { (deviceDetector.size === 'medium'|| deviceDetector.size === 'small' || deviceDetector.size === 'extra-small') &&
                 <MenuIconStyles onClick={() => {setMenuOpen( prev => !prev )} } dangerouslySetInnerHTML={{ __html: menuOpen ? CrossIcon : HamburgerIcon }} />

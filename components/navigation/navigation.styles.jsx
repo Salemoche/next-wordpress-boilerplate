@@ -19,6 +19,14 @@ export const NavigationStyles = styled('div')`
         padding: ${ props => props.theme.spaceM }px;
     }
 
+    .bs-menu-item {
+        text-decoration: none;
+
+        &.active {
+            text-decoration: underline;
+        }
+    }
+
     ${ ({ device, menuOpen }) => {
         if ( device.mode === 'tablet' || device.mode === 'mobile' ) {
             return css`

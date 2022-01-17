@@ -21,7 +21,7 @@ function MyApp({ Component, pageProps }) {
     }, [ deviceDetector ])
 
     useEffect(() => {
-        defaultStore.router = router.route;
+        defaultStore.router = router;
         defaultStore.current.route = router.route;
     }, [ router ])
 
