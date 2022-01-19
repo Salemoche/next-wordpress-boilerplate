@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 // Components
 import TestBlockComponent from '../components/wp-blocks/test-block/test-block.component';
-import { WPBlockStyles } from "../styles/global-components.styles";
+import { WPBlockStyles, WPColumnsStyles, WPColumnStyles } from "../styles/global-components.styles";
 
 // Helpers
 import { v4 as uuidv4 } from 'uuid';
@@ -40,6 +40,7 @@ export const getWordpressBlock = ( block, i, handleClick = () => {}, addImageToL
     const type = block.name.split('/')[0].replace('/', '');
     const category = block.name.split('/')[1];
     const attributes = JSON.parse(block.attributesJSON);
+    const { innerBlocks } = block;
     
     if ( type === 'core' ) {
         if ( category === 'image') {
@@ -60,11 +61,29 @@ export const getWordpressBlock = ( block, i, handleClick = () => {}, addImageToL
                         height={height} 
                         loading={'lazy'}
                         layout={'responsive'} 
+                        quality={75}
+                        // placeholder={'blur'}
                         onClick={ handleClick }
                     />
                     <div className="bs-wp-capture bs-image-capture">{ attributes.caption }</div>
                 </div>
             </WPBlockStyles>
+        } else if (category === 'columns') {
+
+            // Handle column layout
+            return <WPColumnsStyles key={`wp-block-${i || uuidv4()}`} className={`bs-wp-block bs-wp-block-${block.name.split('/')[1]}`}> 
+                <div className="wp-columns">
+                    { innerBlocks.map( innerBlock => {
+                        const innerType = innerBlock.name.split('/')[0].replace('/', '');
+                        const innerCategory = innerBlock.name.split('/')[1];
+                        const innerAttributes = JSON.parse(innerBlock.attributesJSON)
+
+                        //TODO: handle lazyloading images
+                        
+                        return <WPColumnStyles className="wp-block-column" width={ innerAttributes.width } dangerouslySetInnerHTML={{ __html: innerBlock.saveContent }}/>
+                    })}
+                </div>
+            </WPColumnsStyles>
         } else {
             return <WPBlockStyles key={`wp-block-${i || uuidv4()}`} className={`bs-wp-block bs-wp-block-${block.name.split('/')[1]}`} dangerouslySetInnerHTML={{ __html: block.saveContent }}></WPBlockStyles>
         }

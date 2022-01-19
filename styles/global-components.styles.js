@@ -30,10 +30,6 @@ export const BlockStyles = styled('div')`
 
 export const WPBlockStyles = styled(BlockStyles)`
 
-    .wp-block-columns {
-        display: flex;
-    }
-
     .alignfull {
         padding: 0;
         width: 100%;
@@ -143,9 +139,22 @@ export const WPBlockStyles = styled(BlockStyles)`
     }
 `
 
-// export const WPContentStyles = styled(ContentStyles)`
-//     background: green;
-// `
+export const WPColumnsStyles = styled(WPBlockStyles)`
+    width: 100%;
+    padding: 0;
+
+    .wp-columns {
+        width: ${ props => props.theme.contentWidthL }px;
+        max-width: 100%;
+        margin: 0 auto;
+        padding: ${ props => props.theme.spaceM }px;
+        display: flex;    
+    }
+`
+
+export const WPColumnStyles = styled('div')`
+    flex-basis: ${ props => props.width };
+`
 
 export const IconStyles = styled('div')`
     display: block;

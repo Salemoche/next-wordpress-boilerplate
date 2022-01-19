@@ -153,6 +153,19 @@ const GlobalStyles = createGlobalStyle`
         padding: ${ theme.spaceS }px;
         text-decoration: none;
     }
+
+    ::selection {
+        background: ${ theme.colorBlack};
+        color: white;
+    }
+    
+    /**========================
+    *	Accessibility
+    *========================*/
+    *:focus {
+        outline: 2px solid black;
+        outline-offset: 3px;
+    }
     
     /**========================
     *	Typography

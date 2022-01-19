@@ -22,9 +22,9 @@ function LightboxComponent({
     hasCloseButton = true
 }) {
 
-    useEffect(() => {
-        console.log(isModalOpen, content);
-    })
+    // useEffect(() => {
+    //     console.log(isModalOpen, content);
+    // })
 
     return (
         <AnimatePresence>

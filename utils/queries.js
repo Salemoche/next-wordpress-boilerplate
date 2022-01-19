@@ -40,6 +40,13 @@ export const PAGE_QUERY = () => {
                     saveContent
                     order
                     attributesJSON
+                    innerBlocks {
+                        name
+                        originalContent
+                        saveContent
+                        order
+                        attributesJSON
+                    }
                 }
                 seo {
                     canonical
