@@ -36,7 +36,7 @@ const NavigationComponent = ({ mainMenu }) => {
         
         if ( deviceDetector.mode == 'mobile' || deviceDetector.mode == 'tablet') return setShowMenu(true)
 
-        if ( pScrollY.current > current.scrollY || pScrollY.current == null ) {
+        if ( pScrollY.current > current.scrollY || pScrollY.current == null || pScrollY.current == 0 ) {
             setShowMenu(true);
         } else {
             setShowMenu(false);
