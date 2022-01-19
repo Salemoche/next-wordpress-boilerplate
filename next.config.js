@@ -7,4 +7,8 @@ module.exports = {
         });
         return config;
     },
+    images: {
+        domains: ['default.bachstein.ch'],
+        // formats: ['image/avif', 'image/webp, 'image/jpg', 'image/png'],
+    },
 }

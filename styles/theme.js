@@ -9,9 +9,9 @@ const theme = {
     transition: [ '.1s', '.3s', '.6s', '1s'],
     zIndices: {
         loading: 300,
+        modal: 250, 
         navigation: 200,
         infoButton: 100,
-        drop: 5,
     },
     borderRadii: [ '2px', '4px', '8px', '16px', '50%' ],
 }

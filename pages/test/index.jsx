@@ -1,5 +1,5 @@
 // Base
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 // Data
 import { apolloClient } from '../../utils/apolloClient';
@@ -16,12 +16,18 @@ import { ContentStyles, WPBlockStyles } from '../../styles/global-components.sty
 // Animation
 import { motion } from 'framer-motion';
 import { getWordpressBlock } from '../../utils/helpers';
+import LightboxComponent from '../../components/lightbox/lightbox.component';
+
+// Hooks
+import { useModal } from '../../utils/hooks';
+
+
 
 export default function TestPage({ content, mainMenu, footerMenu, baseUrl, siteName }) {
 
     const { deviceDetector } = useSnapshot( defaultStore );
     const { title, blocks } = content
-
+    const { openModal, closeModal, isModalOpen, addImageToLightbox, modalContent } = useModal();
 
     // Set site state
 
@@ -53,10 +59,17 @@ export default function TestPage({ content, mainMenu, footerMenu, baseUrl, siteN
                     <ContentStyles className="bs-content">
                         <h1>Hello, world, this is the { title } page</h1>
                         { blocks.map( (block, i) => (
-                            getWordpressBlock( block, i )
+                            getWordpressBlock( block, i, openModal, addImageToLightbox )
                         )) }
                     </ContentStyles>
                 </section>
+                <LightboxComponent 
+                    content={ modalContent } 
+                    isModalOpen={ isModalOpen } 
+                    closeModal={ closeModal }
+                    hasBackdrop={ true }
+                    hasCloseButton={ true }
+                />
             </LayoutComponent>
         </motion.div>
     )

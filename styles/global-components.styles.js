@@ -106,7 +106,8 @@ export const WPBlockStyles = styled(BlockStyles)`
         }
     }
 
-    .wp-block-image {
+    .wp-block-image,
+    &.bs-wp-block-image {
         &.size-large {
 
         }
@@ -124,10 +125,12 @@ export const WPBlockStyles = styled(BlockStyles)`
         
         .alignleft {
             margin-right: auto;
+            margin-left: 0;
         } 
         
         .alignright {
             margin-left: auto;
+            margin-right: 0;
         } 
     }
 
