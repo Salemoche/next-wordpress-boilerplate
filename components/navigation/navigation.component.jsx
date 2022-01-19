@@ -24,11 +24,27 @@ const NavigationComponent = ({ mainMenu }) => {
     const menuItems = mainMenu?.menuItems?.nodes;
     const { deviceDetector, current } = useSnapshot( defaultStore );
     const [menuOpen, setMenuOpen] = useState(false);
+    const [showMenu, setShowMenu] = useState(true);
+    const pScrollY = useRef(null);
 
 
     useEffect(() => {
         defaultStore.headerHeight = ref.current.offsetHeight || 0;
     }, [ ref ])
+
+    useEffect( () => {
+        
+        if ( deviceDetector.mode == 'mobile' || deviceDetector.mode == 'tablet') return setShowMenu(true)
+
+        if ( pScrollY.current > current.scrollY || pScrollY.current == null ) {
+            setShowMenu(true);
+        } else {
+            setShowMenu(false);
+        }
+
+        pScrollY.current = current.scrollY
+
+    }, [ current.scrollY, deviceDetector ])
 
 
     return (
@@ -36,7 +52,10 @@ const NavigationComponent = ({ mainMenu }) => {
             <motion.nav
                 className="bs-menu bs-main-menu"
                 initial={{ opacity: 0 }}
-                animate={{ opacity: (deviceDetector.size === 'medium'|| deviceDetector.size === 'small' || deviceDetector.size === 'extra-small') && !menuOpen ? 0 : 1 }}
+                animate={{ 
+                    opacity: (deviceDetector.size === 'medium'|| deviceDetector.size === 'small' || deviceDetector.size === 'extra-small') && !menuOpen ? 0 : 1,
+                    y: showMenu ? '0%' : '-100%'
+                }}
                 transition={{ duration: .1 }}
             >
                 { menuItems.map( menuItem => <Link key={ menuItem.path || '/' } href={ menuItem.path || '/' }><a className={`bs-menu-item${menuItem.path === defaultStore?.router?.pathName ? ' active' : ''}`}>{ menuItem.label }</a></Link>) }

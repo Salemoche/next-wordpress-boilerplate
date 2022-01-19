@@ -52,12 +52,10 @@ function MyApp({ Component, pageProps }) {
     }, [])
 
     const updateScrollY = (y) => {
-        console.log('Y:', y);
         defaultStore.current.scrollY = y;
     }
 
     const updateScrollYProgress = (y) => {
-        console.log('Y Progress:', y);
         defaultStore.current.scrollYProgress = y;
     }
 
