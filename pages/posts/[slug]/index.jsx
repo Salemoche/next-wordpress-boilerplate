@@ -26,6 +26,7 @@ const ProjectPage = ({ post, mainMenu, footerMenu, baseUrl, siteName }) => {
     useEffect(() => {
         defaultStore.base.siteName = siteName
         defaultStore.current = {
+            ...defaultStore.current,
             url: baseUrl + slug,
             title
         }

@@ -10,6 +10,8 @@ export const defaultStore = proxy({
     },
     current: {
         url: '',
+        scrollY: 0,
+        scrollYProgress: 0
     }
 
 })

@@ -28,6 +28,7 @@ export default function TestPage({ content, mainMenu, footerMenu, baseUrl, siteN
     useEffect(() => {
         defaultStore.base.siteName = siteName
         defaultStore.current = {
+            ...defaultStore.current,
             url: baseUrl,
             title
         }

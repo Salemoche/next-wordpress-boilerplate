@@ -24,6 +24,7 @@ export default function Home({ content, mainMenu, footerMenu, baseUrl, siteName 
     useEffect(() => {
         defaultStore.base.siteName = siteName
         defaultStore.current = {
+            ...defaultStore.current,
             url: baseUrl,
             title
         }

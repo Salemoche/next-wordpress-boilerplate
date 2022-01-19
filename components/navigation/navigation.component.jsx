@@ -22,8 +22,9 @@ const NavigationComponent = ({ mainMenu }) => {
 
     const ref = useRef();
     const menuItems = mainMenu?.menuItems?.nodes;
-    const { deviceDetector } = useSnapshot( defaultStore );
+    const { deviceDetector, current } = useSnapshot( defaultStore );
     const [menuOpen, setMenuOpen] = useState(false);
+
 
     useEffect(() => {
         defaultStore.headerHeight = ref.current.offsetHeight || 0;
