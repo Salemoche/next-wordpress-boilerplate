@@ -155,7 +155,7 @@ const GlobalStyles = createGlobalStyle`
     }
 
     ::selection {
-        background: ${ theme.colorBlack};
+        background: ${ theme.colorBlack };
         color: white;
     }
     

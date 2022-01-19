@@ -23,7 +23,14 @@ import { useModal } from '../../utils/hooks';
 
 
 
-export default function TestPage({ content, mainMenu, footerMenu, baseUrl, siteName }) {
+export default function TestPage({ 
+    content, 
+    mainMenu, 
+    footerMenu, 
+    baseUrl, 
+    siteName, 
+    media 
+}) {
 
     const { deviceDetector } = useSnapshot( defaultStore );
     const { title, blocks } = content
@@ -59,7 +66,13 @@ export default function TestPage({ content, mainMenu, footerMenu, baseUrl, siteN
                     <ContentStyles className="bs-content">
                         <h1>Hello, world, this is the { title } page</h1>
                         { blocks.map( (block, i) => (
-                            getWordpressBlock( block, i, openModal, addImageToLightbox )
+                            getWordpressBlock( 
+                                block, 
+                                i, 
+                                openModal, 
+                                addImageToLightbox,
+                                media
+                            )
                         )) }
                     </ContentStyles>
                 </section>
@@ -90,6 +103,7 @@ export const getStaticProps = async() => {
     const menus = result.data.menus.nodes;
     const mainMenu = menus.filter( (menu) => (menu.slug === 'main-menu') );
     const footerMenu = menus.filter( (menu) => (menu.slug === 'footer-menu') );
+    const media = result.data.mediaItems.nodes;
     
     return {
         props: {
@@ -97,7 +111,8 @@ export const getStaticProps = async() => {
             mainMenu: mainMenu[0] || {},
             footerMenu: footerMenu[0] || {},
             baseUrl,
-            siteName
+            siteName,
+            media
         }
     }
 }  

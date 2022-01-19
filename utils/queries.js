@@ -106,6 +106,20 @@ export const PAGE_QUERY = () => {
                 }
             }
         }
+        mediaItems {
+            nodes {
+                databaseId
+                mediaItemUrl
+                mediaDetails {
+                    width,
+                    height
+                    sizes {
+                        name
+                        sourceUrl
+                    }
+                }
+            }
+        }
     }`
 }
 
@@ -200,6 +214,20 @@ export const POST_QUERY = ( slug ) => {
                                 path
                             }
                         }
+                    }
+                }
+            }
+        }
+        mediaItems {
+            nodes {
+                databaseId
+                mediaItemUrl
+                mediaDetails {
+                    width,
+                    height
+                    sizes {
+                        name
+                        sourceUrl
                     }
                 }
             }

@@ -8,6 +8,7 @@ import { WPBlockStyles, WPColumnsStyles, WPColumnStyles } from "../styles/global
 
 // Helpers
 import { v4 as uuidv4 } from 'uuid';
+import GalleryComponent from '../components/wp-blocks/gallery/gallery.component';
 
 export const getWordpressImage = ( imageNode, size ) => {
     
@@ -35,7 +36,13 @@ export const getWordpressImage = ( imageNode, size ) => {
     return returnImage;
 }
 
-export const getWordpressBlock = ( block, i, handleClick = () => {}, addImageToLightbox = () => {} ) => {
+export const getWordpressBlock = ( 
+    block, 
+    i, 
+    handleClick = () => {}, 
+    addImageToLightbox = () => {},
+    media
+) => {
 
     const type = block.name.split('/')[0].replace('/', '');
     const category = block.name.split('/')[1];
@@ -73,14 +80,13 @@ export const getWordpressBlock = ( block, i, handleClick = () => {}, addImageToL
             // Handle column layout
             return <WPColumnsStyles key={`wp-block-${i || uuidv4()}`} className={`bs-wp-block bs-wp-block-${block.name.split('/')[1]}`}> 
                 <div className="wp-columns">
-                    { innerBlocks.map( innerBlock => {
+                    { innerBlocks.map( (innerBlock, j) => {
                         const innerType = innerBlock.name.split('/')[0].replace('/', '');
                         const innerCategory = innerBlock.name.split('/')[1];
                         const innerAttributes = JSON.parse(innerBlock.attributesJSON)
 
                         //TODO: handle lazyloading images
-                        
-                        return <WPColumnStyles className="wp-block-column" width={ innerAttributes.width } dangerouslySetInnerHTML={{ __html: innerBlock.saveContent }}/>
+                        return <WPColumnStyles key={`wp-inner-block-${j || uuidv4()}`} className="wp-block-column" width={ innerAttributes.width } dangerouslySetInnerHTML={{ __html: innerBlock.saveContent }}/>
                     })}
                 </div>
             </WPColumnsStyles>
@@ -88,7 +94,10 @@ export const getWordpressBlock = ( block, i, handleClick = () => {}, addImageToL
             return <WPBlockStyles key={`wp-block-${i || uuidv4()}`} className={`bs-wp-block bs-wp-block-${block.name.split('/')[1]}`} dangerouslySetInnerHTML={{ __html: block.saveContent }}></WPBlockStyles>
         }
     } else if ( type === 'acf') {
-        return <TestBlockComponent key={`wp-block-${i || uuidv4()}`} className={`bs-wp-block bs-wp-block-${block.name.split('/')[1]}`} attributes={attributes}></TestBlockComponent>
+
+        if ( category === 'gallery') {
+            return <GalleryComponent key={`wp-block-${i || uuidv4()}`} className={`bs-wp-block bs-wp-block-${block.name.split('/')[1]}`} attributes={ attributes } media={ media } ></GalleryComponent>
+        }
     }
 
 }

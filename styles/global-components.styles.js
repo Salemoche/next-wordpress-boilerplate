@@ -15,6 +15,13 @@ export const ContentStyles = styled('div')`
 
 `
 
+export const GridStyles = styled('div')`
+    display: grid;
+    grid-template-rows: repeat(${ props => props.gridRows || 1}, 1fr );
+    grid-template-columns: repeat(${ props => props.gridColumns || 1}, 1fr);
+    grid-gap: ${ props => props.gridGap || 0}px; 
+`
+
 export const BlockStyles = styled('div')`
     
     width: 100%;
