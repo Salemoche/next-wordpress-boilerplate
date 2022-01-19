@@ -23,9 +23,9 @@ const MetaComponent = ({ headerTags }) => {
 
             <meta name="viewport" content= "width=device-width, initial-scale=1.0" />
             <link rel="icon" href="/favicon.ico" />
-            <link rel="preload" href="/fonts/Bon_Voyage/MADE_Bon_Voyage_Regular.otf" as="font" crossOrigin=""/>
+            {/* <link rel="preload" href="/fonts/Bon_Voyage/MADE_Bon_Voyage_Regular.otf" as="font" crossOrigin=""/>
             <link rel="preload" href="/fonts/Bon_Voyage/MADE_Bon_Voyage_Thin.otf" as="font" crossOrigin=""/>
-            <link rel="preload" href="/fonts/Monument_Grotesk/ABCMonumentGrotesk-Regular.woff" as="font" crossOrigin=""/>
+            <link rel="preload" href="/fonts/Monument_Grotesk/ABCMonumentGrotesk-Regular.woff" as="font" crossOrigin=""/> */}
         </Head>
     )
 }
