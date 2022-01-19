@@ -3,6 +3,9 @@ import { WPBlockStyles } from "../styles/global-components.styles";
 // Components
 import TestBlockComponent from '../components/wp-blocks/test-block/test-block.component';
 
+// Helpers
+import { v4 as uuidv4 } from 'uuid';
+
 export const getWordpressImage = ( imageNode, size ) => {
     
     if ( !imageNode ) return null;
@@ -36,9 +39,9 @@ export const getWordpressBlock = ( block, i ) => {
     const attributes = JSON.parse(block.attributesJSON);
     
     if ( type === 'core' ) {
-        return <WPBlockStyles key={`wp-block-${i}`} className={`bs-wp-block bs-wp-block-${block.name.split('/')[1]}`} dangerouslySetInnerHTML={{ __html: block.saveContent }}></WPBlockStyles>
+        return <WPBlockStyles key={`wp-block-${i || uuidv4()}`} className={`bs-wp-block bs-wp-block-${block.name.split('/')[1]}`} dangerouslySetInnerHTML={{ __html: block.saveContent }}></WPBlockStyles>
     } else if ( type === 'acf') {
-        return <TestBlockComponent key={`wp-block-${i}`} className={`bs-wp-block bs-wp-block-${block.name.split('/')[1]}`} attributes={attributes}></TestBlockComponent>
+        return <TestBlockComponent key={`wp-block-${i || uuidv4()}`} className={`bs-wp-block bs-wp-block-${block.name.split('/')[1]}`} attributes={attributes}></TestBlockComponent>
     }
 
 }

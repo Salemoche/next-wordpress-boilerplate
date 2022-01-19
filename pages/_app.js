@@ -1,6 +1,5 @@
 // Base
-import { AnimatePresence } from 'framer-motion'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router';
 
 // Data
@@ -11,6 +10,10 @@ import { defaultStore } from '../state/store';
 import { ThemeProvider } from 'styled-components'
 import theme from '../styles/theme';
 import GlobalStyles from '../styles/global.styles.js';
+import LoadingComponent from '../components/loading/loading.component';
+
+//Animation
+import { AnimatePresence, motion } from 'framer-motion';
 
 
 export function reportWebVitals(metric) {
@@ -20,6 +23,7 @@ export function reportWebVitals(metric) {
 function MyApp({ Component, pageProps }) {
     const router = useRouter()
     const deviceDetector = useDeviceDetector();
+    const [showLoading, setShowLoading] = useState(true)
 
     useEffect(() => {
         defaultStore.deviceDetector = deviceDetector;
@@ -35,10 +39,29 @@ function MyApp({ Component, pageProps }) {
         console.log(defaultStore)
     }, [ defaultStore ])
 
+    useEffect(() => {
+        setTimeout(() => {
+            setShowLoading(false);
+        }, 500);
+    })
+
 
     return (
         <ThemeProvider theme={ theme }>
             <GlobalStyles/>
+            <AnimatePresence>
+                { showLoading &&
+                <motion.div
+                    key="bs-loading"
+                    initial={{ opacity: 1 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: .1 }}
+                >
+                    <LoadingComponent/>
+                </motion.div>
+                }
+            </AnimatePresence>
             <AnimatePresence 
                 exitBeforeEnter={true}
                 initial={false}
