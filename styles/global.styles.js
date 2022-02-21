@@ -54,7 +54,6 @@ const GlobalStyles = createGlobalStyle`
         padding: 0;
         margin: 0;
         width: 100vw;
-        overflow-x: hidden;
         font-size: ${ theme.fontSizeS }px;
         font-family: ${ theme.fontFamilyDefault };
         color: ${ theme.colorBlack };
@@ -65,8 +64,13 @@ const GlobalStyles = createGlobalStyle`
     }
 
     html {
+        overflow: hidden;
+    }
+
+    body {
         overflow-x: hidden;
         scroll-behavior: smooth;
+        height: 100vh;
     }
 
     * {

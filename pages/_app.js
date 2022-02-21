@@ -14,6 +14,7 @@ import LoadingComponent from '../components/loading/loading.component';
 
 //Animation
 import { AnimatePresence, motion, useViewportScroll } from 'framer-motion';
+import Scrollbar, { ScrollbarOptions } from 'smooth-scrollbar';
 
 
 // export function reportWebVitals(metric) {
@@ -42,8 +43,10 @@ function MyApp({ Component, pageProps }) {
     // Scroll
     useEffect(() => {
 
-        const unsubscribeScrollY = scrollY.onChange( y => updateScrollY(y))
-        const unsubscribeScrollYProgress = scrollYProgress.onChange( y => updateScrollYProgress(y))
+        const unsubscribeScrollY = scrollY.onChange( y => updateScrollY(y));
+        const unsubscribeScrollYProgress = scrollYProgress.onChange( y => updateScrollYProgress(y));
+
+        Scrollbar.init(document.querySelector('body'), {});
 
         return () => {
             unsubscribeScrollY();
