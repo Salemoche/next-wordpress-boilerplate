@@ -1,5 +1,5 @@
 //Base
-import { useLayoutEffect } from 'react';
+import { useEffect } from 'react';
 
 // Data
 import { defaultStore } from '../../state/store';
@@ -29,7 +29,7 @@ const LayoutComponent = ({
     const [mainStyle, setMainStyle] = useState({})
     const headerTags = useSiteHeader( baseUrl, siteName, content );
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         if ( !window ) return
         const topSpacing = deviceDetector.size === 'medium'|| deviceDetector.size === 'small' || deviceDetector.size === 'extra-small' ? 0 : headerHeight;
         setMainStyle({
