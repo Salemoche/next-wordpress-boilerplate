@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef, useMemo } from 'react';
 import DeviceDetector from "device-detector-js";
-import theme from '../styles/theme';
+import defaultTheme from '../styles/theme';
 import { getWordpressImage } from './helpers';
 
 // Components
@@ -22,31 +22,31 @@ export const useDeviceDetector = () => {
         let mode;
 
         switch (true) {
-            case width > theme.breakpointXXL:
+            case width > defaultTheme.breakpointXXL:
                 size = 'oversize'
                 mode = 'desktop'
                 break;
-            case width > theme.breakpointXL:
+            case width > defaultTheme.breakpointXL:
                 size = 'extra-extra-large'
                 mode = 'desktop'
                 break;
-            case width > theme.breakpointL:
+            case width > defaultTheme.breakpointL:
                 size = 'extra-large'
                 mode = 'desktop'
                 break;
-            case width > theme.breakpointM:
+            case width > defaultTheme.breakpointM:
                 size = 'large'
                 mode = 'desktop'
                 break;
-            case width > theme.breakpointS:
+            case width > defaultTheme.breakpointS:
                 size = 'medium'
                 mode = 'tablet'
                 break;
-            case width > theme.breakpointXS:
+            case width > defaultTheme.breakpointXS:
                 size = 'small'
                 mode = 'mobile'
                 break;
-            case width < theme.breakpointXS:
+            case width < defaultTheme.breakpointXS:
                 size = 'extra-small'
                 mode = 'mobile'
                 break;

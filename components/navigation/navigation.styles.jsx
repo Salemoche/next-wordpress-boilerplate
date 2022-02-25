@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 import { IconStyles } from '../../styles/global-components.styles';
-import theme from '../../styles/theme'
+import defaultTheme from '../../styles/theme'
 
 export const NavigationStyles = styled('div')`
 
@@ -8,7 +8,7 @@ export const NavigationStyles = styled('div')`
     top: 0;
     left: 0;
     width: 100vw;
-    z-index: ${ theme.zIndices.navigation };
+    z-index: ${ defaultTheme.zIndices.navigation };
 
     .bs-main-menu {
         display: flex;

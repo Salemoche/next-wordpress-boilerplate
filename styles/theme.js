@@ -5,9 +5,20 @@ const defaultTheme = {
     fontFamilies: [ 'Lato' ],
     lineHeights: [ 0.85, 1, 1.2, 1.5, 2 ],
     contentWidths: [ 600, 1260 ],
-    colors: [ '#333' ],
+    colors: { 
+        black: [
+            '#333'
+        ],
+        white: [
+            '#fff'
+        ],
+        blue: [
+            '#00ddff'
+        ]
+    },
     transition: [ '.1s', '.3s', '.6s', '1s'],
     zIndices: {
+        debugControls: 400,
         loading: 300,
         modal: 250, 
         navigation: 200,
@@ -36,19 +47,23 @@ defaultTheme.breakpointS = defaultTheme.breakpoints[1]
 defaultTheme.breakpointXS = defaultTheme.breakpoints[0]
 defaultTheme.contentWidthL = defaultTheme.contentWidths[1]
 defaultTheme.contentWidthS = defaultTheme.contentWidths[0]
-defaultTheme.colorBlack = defaultTheme.colors[0]
 defaultTheme.borderRadiusXS = defaultTheme.borderRadii[0];
 defaultTheme.borderRadiusS = defaultTheme.borderRadii[1];
 defaultTheme.borderRadiusM = defaultTheme.borderRadii[2];
 defaultTheme.borderRadiusL = defaultTheme.borderRadii[3];
 
 export const baseTheme = {
-    ...defaultTheme
+    ...defaultTheme,
+    fontColor: defaultTheme.colors.black[0],
+    linkColor: defaultTheme.colors.blue[0],
+    backgroundColor: defaultTheme.colors.white[0],
 }
 
 export const invertedTheme = {
     ...defaultTheme,
-    backgroundColor: defaultTheme.colorBlack
+    fontColor: defaultTheme.colors.white[0],
+    linkColor: defaultTheme.colors.blue[0],
+    backgroundColor: defaultTheme.colors.black[0],
 }
 
 export default defaultTheme

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 // import { accessibilityTheme } from '../../../styles/theme';
 
-// const backgroundColor = theme.variants('mode', 'variant', {
+// const backgroundColor = defaultTheme.variants('mode', 'variant', {
 //     default: { light: 'gray', dark: 'darkgray' }, 
 //     primary: { light: 'blue', dark: 'darkblue' }, 
 //     success: { light: 'green', dark: 'darkgreen' },   

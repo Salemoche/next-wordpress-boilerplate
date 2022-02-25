@@ -9,7 +9,7 @@ import { useCookies } from 'react-cookie'
 
 // Styling
 import { ThemeProvider } from 'styled-components'
-import theme, { accessibilityTheme } from '../styles/theme';
+import defaultTheme, { baseTheme, invertedTheme } from '../styles/theme';
 import GlobalStyles from '../styles/global.styles.js';
 import LoadingComponent from '../components/loading/loading.component';
 
@@ -17,6 +17,7 @@ import LoadingComponent from '../components/loading/loading.component';
 import { AnimatePresence, motion, useViewportScroll } from 'framer-motion';
 import Scrollbar, { ScrollbarOptions } from 'smooth-scrollbar';
 import CookieNotice from '../components/cookie-notice/cookie-notice.component';
+import DebugControls from '../components/debug/debug-controls.component';
 
 
 // export function reportWebVitals(metric) {
@@ -28,28 +29,43 @@ function MyApp({ Component, pageProps }) {
     const deviceDetector = useDeviceDetector();
     const [showLoading, setShowLoading] = useState(true)
     const { scrollY, scrollYProgress } = useViewportScroll();
-
-    // Cookies
     const [cookies, setCookie, removeCookie] = useCookies(['bs-agrees-to-cookies']);
+    const [theme, setTheme] = useState( baseTheme )
+
+    
+    /**========================
+    *	Cookies
+    *========================*/
 
     const handleCookieNotice = ( accepted ) => {
         console.log(accepted);
     }
 
-    // Device
+    
+    /**========================
+    *	Device
+    *========================*/
 
     useEffect(() => {
         defaultStore.deviceDetector = deviceDetector;
     }, [ deviceDetector ])
 
-    // Router
+    
+    /**========================
+    *	Router
+    *========================*/
+
     useEffect(() => {
         defaultStore.router = router;
         defaultStore.current.route = router.route;
     }, [ router ])
 
 
-    // Scroll
+    
+    /**========================
+    *	Scroll
+    *========================*/
+    
     useEffect(() => {
 
         const unsubscribeScrollY = scrollY.onChange( y => updateScrollY(y));
@@ -74,8 +90,21 @@ function MyApp({ Component, pageProps }) {
         defaultStore.current.scrollYProgress = y;
     }
 
-    // Debug State
+    
+    /**========================
+    *	Styling
+    *========================*/    
 
+    
+    /**========================
+    *	Debug
+    *========================*/
+
+    const handleDebugClick = () => {
+        setTheme( prev => prev == baseTheme ? invertedTheme : baseTheme );
+    }
+
+    // State
     useEffect(() => {
         console.log('=================== State change ===================')
         console.log(defaultStore)
@@ -90,32 +119,33 @@ function MyApp({ Component, pageProps }) {
 
     return (
         <ThemeProvider theme={ theme }>
-            <ThemeProvider theme={ accessibilityTheme }>
-            {/* <ThemeProvider theme={{ mode: 'dark' }}> */}
-                <GlobalStyles/>
-                <AnimatePresence>
-                    { showLoading &&
-                    <motion.div
-                        key="bs-loading"
-                        initial={{ opacity: 1 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: .1 }}
-                    >
-                        <LoadingComponent/>
-                    </motion.div>
-                    }
-                </AnimatePresence>
-                <AnimatePresence 
-                    exitBeforeEnter={true}
-                    initial={false}
+        {/* <ThemeProvider theme={{ mode: 'dark' }}> */}
+            <GlobalStyles/>
+            <AnimatePresence>
+                { showLoading &&
+                <motion.div
+                    key="bs-loading"
+                    initial={{ opacity: 1 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: .1 }}
                 >
-                    <Component {...pageProps} key={router.route}/>
-                </AnimatePresence>
-                {/* { cookies['bs-agrees-to-cookies'] &&  */}
-                    <CookieNotice handleClick={ handleCookieNotice } />
-                {/* } */}
-            </ThemeProvider>
+                    <LoadingComponent/>
+                </motion.div>
+                }
+            </AnimatePresence>
+            <AnimatePresence 
+                exitBeforeEnter={true}
+                initial={false}
+            >
+                <Component {...pageProps} key={router.route}/>
+            </AnimatePresence>
+            {/* { cookies['bs-agrees-to-cookies'] &&  */}
+                <CookieNotice handleClick={ handleCookieNotice } />
+            {/* } */}
+            { true &&
+                <DebugControls handleClick={ handleDebugClick }/>
+            }
         </ThemeProvider>
         
     )

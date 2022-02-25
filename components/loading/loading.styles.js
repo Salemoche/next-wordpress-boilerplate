@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import theme from '../../styles/theme'
+import defaultTheme from '../../styles/theme'
 
 export const LoadingStyles = styled('div')`
     position: fixed;
@@ -11,5 +11,5 @@ export const LoadingStyles = styled('div')`
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: ${ theme.zIndices.loading }
+    z-index: ${ defaultTheme.zIndices.loading }
 `

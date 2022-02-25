@@ -1,5 +1,4 @@
 import { createGlobalStyle } from "styled-components";
-import theme from './theme'
 
 // Fonts
 // import BonVoyageRegular from '../assets/fonts/Bon_Voyage/MADE_Bon_Voyage_Regular.otf'
@@ -57,9 +56,9 @@ const GlobalStyles = createGlobalStyle`
         padding: 0;
         margin: 0;
         width: 100vw;
-        font-size: ${ theme.fontSizeS }px;
-        font-family: ${ theme.fontFamilyDefault };
-        color: ${ theme.colorBlack };
+        font-size: ${ props => props.theme.fontSizeS }px;
+        font-family: ${ props => props.theme.fontFamilyDefault };
+        color: ${ props => props.theme.fontColor };
     }
 
     main {
@@ -74,6 +73,7 @@ const GlobalStyles = createGlobalStyle`
         overflow-x: hidden;
         scroll-behavior: smooth;
         height: 100vh;
+        background-color: ${ props => props.theme.backgroundColor }
     }
 
     * {
@@ -91,37 +91,37 @@ const GlobalStyles = createGlobalStyle`
     }
 
     h1 {
-        font-size: ${ theme.fontSizeXXL }px;
-        margin-bottom: ${ theme.spaceS }px;
+        font-size: ${ props => props.theme.fontSizeXXL }px;
+        margin-bottom: ${ props => props.theme.spaceS }px;
     }
 
     h2 {
-        font-size: ${ theme.fontSizeXXL }px;
-        margin-bottom: ${ theme.spaceS }px;
+        font-size: ${ props => props.theme.fontSizeXXL }px;
+        margin-bottom: ${ props => props.theme.spaceS }px;
     }
 
     h3 {
-        font-size: ${ theme.fontSizeXL }px;
-        margin-bottom: ${ theme.spaceXS }px;
+        font-size: ${ props => props.theme.fontSizeXL }px;
+        margin-bottom: ${ props => props.theme.spaceXS }px;
     }
 
     h4 {
-        font-size: ${ theme.fontSizeL }px;
-        margin-bottom: ${ theme.spaceXS }px;
+        font-size: ${ props => props.theme.fontSizeL }px;
+        margin-bottom: ${ props => props.theme.spaceXS }px;
     }
 
     h5 {
-        font-size: ${ theme.fontSizeM }px;
-        margin-bottom: ${ theme.spaceXXS }px;
+        font-size: ${ props => props.theme.fontSizeM }px;
+        margin-bottom: ${ props => props.theme.spaceXXS }px;
     }
 
     h6 {
-        font-size: ${ theme.fontSizeS }px;
+        font-size: ${ props => props.theme.fontSizeS }px;
     }
 
     p {
         margin: 0;
-        margin-bottom: ${ theme.spaceS }px;
+        margin-bottom: ${ props => props.theme.spaceS }px;
 
         &:last-of-type {
             margin-bottom: 0;
@@ -129,7 +129,7 @@ const GlobalStyles = createGlobalStyle`
     }
 
     a {
-        color: ${ theme.colorBlack };
+        color: ${ props => props.theme.linkColor };
     }
 
     ul {
@@ -156,13 +156,13 @@ const GlobalStyles = createGlobalStyle`
     .wp-block-file__button {
         background: black;
         color: white;
-        border-radius: ${ theme.borderRadiusXS };
-        padding: ${ theme.spaceS }px;
+        border-radius: ${ props => props.theme.borderRadiusXS };
+        padding: ${ props => props.theme.spaceS }px;
         text-decoration: none;
     }
 
     ::selection {
-        background: ${ theme.colorBlack };
+        background: ${ props => props.theme.colors.black[0] };
         color: white;
     }
     

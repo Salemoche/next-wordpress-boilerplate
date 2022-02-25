@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { IconStyles } from '../../styles/global-components.styles';
-import theme from '../../styles/theme';
+import defaultTheme from '../../styles/theme';
 
 export const LightboxStyles = styled('div')`
     position: fixed;
@@ -8,8 +8,8 @@ export const LightboxStyles = styled('div')`
     top: 0%;
     width: 100%;
     height: 100%;
-    z-index: ${ theme.zIndices.modal };
-    padding: ${ theme.spaceM }px;
+    z-index: ${ defaultTheme.zIndices.modal };
+    padding: ${ defaultTheme.spaceM }px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -34,8 +34,8 @@ export const LightboxStyles = styled('div')`
 
 export const CloseButtonStyles = styled(IconStyles)`
     position: absolute;
-    top: ${ theme.spaceM }px;
-    right: ${ theme.spaceM }px;
+    top: ${ defaultTheme.spaceM }px;
+    right: ${ defaultTheme.spaceM }px;
     z-index: 1;
     cursor: pointer;
 `
