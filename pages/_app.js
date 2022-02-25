@@ -56,7 +56,7 @@ function MyApp({ Component, pageProps }) {
     
 
     const handleCookieNotice = ( accepted ) => {
-        setCookie('bs-agrees-to-cookies', accepted ? 'true' : 'false', { maxAge: 30 });
+        setCookie('bs-agrees-to-cookies', accepted ? 'true' : 'false', { maxAge: 60 * 60 * 24 /*hours*/ });
     }
 
     
@@ -159,7 +159,7 @@ function MyApp({ Component, pageProps }) {
             { showCookieNotice && 
                 <CookieNotice handleClick={ handleCookieNotice } />
             }
-            { true &&
+            { false &&
                 <motion.div
                     drag
                     dragMomentum={ false }

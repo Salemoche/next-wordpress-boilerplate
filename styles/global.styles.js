@@ -154,6 +154,7 @@ const GlobalStyles = createGlobalStyle`
     input[type=submit],
     .button,
     .wp-block-file__button {
+        cursor: pointer;
         background: black;
         color: white;
         border-radius: ${ props => props.theme.borderRadiusXS };

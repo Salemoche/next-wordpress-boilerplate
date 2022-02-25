@@ -36,7 +36,7 @@ const LayoutComponent = ({
             marginTop: topSpacing,
             minHeight: window.innerHeight - topSpacing - footerHeight + 'px'
         })
-    }, [ footerHeight, headerHeight, deviceDetector.size ])
+    }, [ footerHeight, headerHeight, deviceDetector ])
 
     return (
         <>

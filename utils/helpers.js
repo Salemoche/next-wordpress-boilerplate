@@ -5,10 +5,12 @@ import Image from 'next/image'
 // Components
 import TestBlockComponent from '../components/wp-blocks/test-block/test-block.component';
 import { WPBlockStyles, WPColumnsStyles, WPColumnStyles } from "../styles/global-components.styles";
+import ReactPlayer from 'react-player'
 
 // Helpers
 import { v4 as uuidv4 } from 'uuid';
 import GalleryComponent from '../components/wp-blocks/gallery/gallery.component';
+import SliderComponent from '../components/wp-blocks/slider/slider.component';
 
 export const getWordpressImage = ( imageNode, size ) => {
     
@@ -72,7 +74,9 @@ export const getWordpressBlock = (
                         // placeholder={'blur'}
                         onClick={ handleClick }
                     />
-                    <div className="bs-wp-capture bs-image-capture">{ attributes.caption }</div>
+                    { attributes.caption && 
+                        <div className="bs-wp-capture bs-image-capture">{ attributes.caption }</div>
+                    }
                 </div>
             </WPBlockStyles>
         } else if (category === 'columns') {
@@ -90,12 +94,26 @@ export const getWordpressBlock = (
                     })}
                 </div>
             </WPColumnsStyles>
+        } else if ( category === 'embed' ) {
+            return <WPBlockStyles key={`wp-block-${i || uuidv4()}`} className={`bs-wp-block bs-wp-block-${block.name.split('/')[1]}`}>
+                <ReactPlayer 
+                    url={attributes.url} 
+                    playsinline={true}  
+                />
+                { attributes.caption && 
+                    <div className="bs-wp-capture bs-video-capture">{ attributes.caption }</div>
+                }
+            </WPBlockStyles>
         } else {
             return <WPBlockStyles key={`wp-block-${i || uuidv4()}`} className={`bs-wp-block bs-wp-block-${block.name.split('/')[1]}`} dangerouslySetInnerHTML={{ __html: block.saveContent }}></WPBlockStyles>
         }
     } else if ( type === 'acf') {
 
-        if ( category === 'gallery') {
+        if ( category === 'slider') {
+            // console.log(block)
+            return <SliderComponent key={`wp-block-${i || uuidv4()}`} className={`bs-wp-block bs-wp-block-${block.name.split('/')[1]}`} attributes={ attributes } media={ media } ></SliderComponent>
+        } else if ( category === 'gallery') {
+            console.log(block, attributes)
             return <GalleryComponent key={`wp-block-${i || uuidv4()}`} className={`bs-wp-block bs-wp-block-${block.name.split('/')[1]}`} attributes={ attributes } media={ media } ></GalleryComponent>
         }
     }

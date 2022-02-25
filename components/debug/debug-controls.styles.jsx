@@ -9,4 +9,6 @@ export const DebugControlsStyles = styled('div')`
     right: 20px;
     padding: ${ props => props.theme.spaceM }px;
     border-radius: ${ props => props.theme.borderRadii[3] };
+
+    cursor: ${ props => props.isGrabbing ? 'grabbing' : 'grab' };
 `
