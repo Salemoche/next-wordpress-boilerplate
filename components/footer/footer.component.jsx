@@ -1,10 +1,12 @@
 // Base
 import React, { useRef, useEffect } from 'react'
 import Link from 'next/link';
-import { FooterStyles } from './footer.styles';
 
 // Data
 import { defaultStore } from '../../state/store';
+
+// Style
+import { FooterStyles } from './footer.styles';
 
 const FooterComponent = () => {
 

@@ -12,6 +12,13 @@ export const defaultStore = proxy({
         url: '',
         scrollY: 0,
         scrollYProgress: 0
+    },
+    cookies: {
+        allowed: undefined,
+    },
+    theme: {
+        accessible: false,
+        negative: false,
     }
 
 })

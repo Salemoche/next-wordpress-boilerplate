@@ -1,4 +1,4 @@
-const theme = {
+const defaultTheme = {
     breakpoints: [ 320, 414, 768, 1024, 1440, 1800 ],
     space: [ 0, 4, 8, 16, 32, 64, 128, 256, 512 ],
     fontSizes: [ 14, 16, 20, 24, 36, 48 ],
@@ -16,30 +16,39 @@ const theme = {
     borderRadii: [ '2px', '4px', '8px', '16px', '50%' ],
 }
 
-theme.spaceXXS = theme.space[1];
-theme.spaceXS = theme.space[2];
-theme.spaceS = theme.space[3];
-theme.spaceM = theme.space[4];
-theme.spaceL = theme.space[5];
-theme.fontSizeXS = theme.fontSizes[0];
-theme.fontSizeS = theme.fontSizes[1];
-theme.fontSizeM = theme.fontSizes[2];
-theme.fontSizeL = theme.fontSizes[3];
-theme.fontSizeXL = theme.fontSizes[4];
-theme.fontSizeXXL = theme.fontSizes[4];
-theme.fontFamilyDefault = theme.fontFamilies[0];
-theme.breakpointXXL = theme.breakpoints[5]
-theme.breakpointXL = theme.breakpoints[4]
-theme.breakpointL = theme.breakpoints[3]
-theme.breakpointM = theme.breakpoints[2]
-theme.breakpointS = theme.breakpoints[1]
-theme.breakpointXS = theme.breakpoints[0]
-theme.contentWidthL = theme.contentWidths[1]
-theme.contentWidthS = theme.contentWidths[0]
-theme.colorBlack = theme.colors[0]
-theme.borderRadiusXS = theme.borderRadii[0];
-theme.borderRadiusS = theme.borderRadii[1];
-theme.borderRadiusM = theme.borderRadii[2];
-theme.borderRadiusL = theme.borderRadii[3];
+defaultTheme.spaceXXS = defaultTheme.space[1];
+defaultTheme.spaceXS = defaultTheme.space[2];
+defaultTheme.spaceS = defaultTheme.space[3];
+defaultTheme.spaceM = defaultTheme.space[4];
+defaultTheme.spaceL = defaultTheme.space[5];
+defaultTheme.fontSizeXS = defaultTheme.fontSizes[0];
+defaultTheme.fontSizeS = defaultTheme.fontSizes[1];
+defaultTheme.fontSizeM = defaultTheme.fontSizes[2];
+defaultTheme.fontSizeL = defaultTheme.fontSizes[3];
+defaultTheme.fontSizeXL = defaultTheme.fontSizes[4];
+defaultTheme.fontSizeXXL = defaultTheme.fontSizes[4];
+defaultTheme.fontFamilyDefault = defaultTheme.fontFamilies[0];
+defaultTheme.breakpointXXL = defaultTheme.breakpoints[5]
+defaultTheme.breakpointXL = defaultTheme.breakpoints[4]
+defaultTheme.breakpointL = defaultTheme.breakpoints[3]
+defaultTheme.breakpointM = defaultTheme.breakpoints[2]
+defaultTheme.breakpointS = defaultTheme.breakpoints[1]
+defaultTheme.breakpointXS = defaultTheme.breakpoints[0]
+defaultTheme.contentWidthL = defaultTheme.contentWidths[1]
+defaultTheme.contentWidthS = defaultTheme.contentWidths[0]
+defaultTheme.colorBlack = defaultTheme.colors[0]
+defaultTheme.borderRadiusXS = defaultTheme.borderRadii[0];
+defaultTheme.borderRadiusS = defaultTheme.borderRadii[1];
+defaultTheme.borderRadiusM = defaultTheme.borderRadii[2];
+defaultTheme.borderRadiusL = defaultTheme.borderRadii[3];
 
-export default theme
+export const baseTheme = {
+    ...defaultTheme
+}
+
+export const invertedTheme = {
+    ...defaultTheme,
+    backgroundColor: defaultTheme.colorBlack
+}
+
+export default defaultTheme
