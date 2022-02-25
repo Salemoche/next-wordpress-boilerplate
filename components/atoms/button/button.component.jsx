@@ -6,9 +6,9 @@ import { defaultStore } from '../../../state/store';
 // Style
 import { ButtonStyles } from './button.styles';
 
-const ButtonComponent = ({ label, handleClick }) => {
+const ButtonComponent = ({ label, handleClick, className }) => {
     return (
-        <ButtonStyles onClick={ handleClick } >
+        <ButtonStyles className={ className } onClick={ handleClick } >
             { label }
         </ButtonStyles>
     )

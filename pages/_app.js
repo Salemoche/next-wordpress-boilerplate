@@ -30,6 +30,7 @@ function MyApp({ Component, pageProps }) {
     const [showLoading, setShowLoading] = useState(true)
     const { scrollY, scrollYProgress } = useViewportScroll();
     const [cookies, setCookie, removeCookie] = useCookies(['bs-agrees-to-cookies']);
+    const [showCookieNotice, setShowCookieNotice] = useState(false)
     const [theme, setTheme] = useState( baseTheme )
 
     
@@ -37,8 +38,25 @@ function MyApp({ Component, pageProps }) {
     *	Cookies
     *========================*/
 
+    useEffect(() => {
+        if ( !cookies['bs-agrees-to-cookies'] ) {
+            setShowCookieNotice(true);
+        } else {
+
+            if ( cookies['bs-agrees-to-cookies'] == 'true' ) {
+                defaultStore.cookies.allowed = true;
+            } else {
+                defaultStore.cookies.allowed = false;
+            }
+
+            setShowCookieNotice(false);
+        }
+
+    }, [cookies])
+    
+
     const handleCookieNotice = ( accepted ) => {
-        console.log(accepted);
+        setCookie('bs-agrees-to-cookies', accepted ? 'true' : 'false', { maxAge: 30 });
     }
 
     
@@ -71,10 +89,8 @@ function MyApp({ Component, pageProps }) {
         const unsubscribeScrollY = scrollY.onChange( y => updateScrollY(y));
         const unsubscribeScrollYProgress = scrollYProgress.onChange( y => updateScrollYProgress(y));
 
-        Scrollbar.init(document.querySelector('body'), {});
-
-        setCookie('bs-agrees-to-cookies', 'yeah')
-        console.log(cookies);
+        // TODO
+        // Scrollbar.init(document.querySelector('body'), {});
 
         return () => {
             unsubscribeScrollY();
@@ -140,9 +156,9 @@ function MyApp({ Component, pageProps }) {
             >
                 <Component {...pageProps} key={router.route}/>
             </AnimatePresence>
-            {/* { cookies['bs-agrees-to-cookies'] &&  */}
+            { showCookieNotice && 
                 <CookieNotice handleClick={ handleCookieNotice } />
-            {/* } */}
+            }
             { true &&
                 <motion.div
                     drag
