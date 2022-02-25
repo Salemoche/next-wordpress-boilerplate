@@ -1,18 +1,15 @@
 import styled from 'styled-components';
-// import { accessibilityTheme } from '../../../styles/theme';
+import { variant } from 'styled-system'
 
-// const backgroundColor = defaultTheme.variants('mode', 'variant', {
-//     default: { light: 'gray', dark: 'darkgray' }, 
-//     primary: { light: 'blue', dark: 'darkblue' }, 
-//     success: { light: 'green', dark: 'darkgreen' },   
-//     warning: { light: 'orange', dark: 'darkorange' }, 
-// });
-
-export const ButtonStyles = styled.button`
-    /* background-color: ${backgroundColor}; */
-    /* color: ${accessibilityTheme.color}; */
+export const ButtonStyles = styled('button')`
+    background: ${ props => props.theme.backgroundColorInverted };
+    color: ${ props => props.theme.fontColorInverted };
 `;
 
-ButtonStyles.defaultProps = {
-    variant: 'default',
-};
+export const ActiveButtonStyles = styled(ButtonStyles)`
+
+`;
+
+export const InactiveButtonStyles = styled(ButtonStyles)`
+
+`;

@@ -11,5 +11,5 @@ export const LoadingStyles = styled('div')`
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: ${ defaultTheme.zIndices.loading }
+    z-index: ${ props => props.theme.zIndices.loading }
 `

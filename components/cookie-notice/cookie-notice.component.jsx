@@ -13,8 +13,8 @@ import ButtonComponent from '../atoms/button/button.component';
 const CookieNotice = ({ handleClick }) => {
     return (
         <CookieNoticeStyles>
-            <ButtonComponent label='i am a button' handleClick={ () => handleClick(true) } />
-            <ButtonComponent label='i am a button' handleClick={ () => handleClick(false) } />
+            <ButtonComponent label='accept cookies' handleClick={ () => handleClick(true) } />
+            <ButtonComponent label='deny cookies' handleClick={ () => handleClick(false) } />
         </CookieNoticeStyles>
     )
 }

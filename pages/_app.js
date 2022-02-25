@@ -144,7 +144,20 @@ function MyApp({ Component, pageProps }) {
                 <CookieNotice handleClick={ handleCookieNotice } />
             {/* } */}
             { true &&
-                <DebugControls handleClick={ handleDebugClick }/>
+                <motion.div
+                    drag
+                    dragMomentum={ false }
+                    style={{
+                        right: 0,
+                        top: 0,
+                        position: 'fixed',
+                        top: '100px',
+                        right: '100px',
+                        zIndex: 1000,
+                    }}
+                >
+                    <DebugControls handleClick={ handleDebugClick }/>
+                </motion.div>
             }
         </ThemeProvider>
         

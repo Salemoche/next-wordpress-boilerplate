@@ -8,8 +8,8 @@ export const LightboxStyles = styled('div')`
     top: 0%;
     width: 100%;
     height: 100%;
-    z-index: ${ defaultTheme.zIndices.modal };
-    padding: ${ defaultTheme.spaceM }px;
+    z-index: ${ props => props.theme.zIndices.modal };
+    padding: ${ props => props.theme.spaceM }px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -34,8 +34,8 @@ export const LightboxStyles = styled('div')`
 
 export const CloseButtonStyles = styled(IconStyles)`
     position: absolute;
-    top: ${ defaultTheme.spaceM }px;
-    right: ${ defaultTheme.spaceM }px;
+    top: ${ props => props.theme.spaceM }px;
+    right: ${ props => props.theme.spaceM }px;
     z-index: 1;
     cursor: pointer;
 `

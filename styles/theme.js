@@ -55,15 +55,19 @@ defaultTheme.borderRadiusL = defaultTheme.borderRadii[3];
 export const baseTheme = {
     ...defaultTheme,
     fontColor: defaultTheme.colors.black[0],
+    fontColorInverted: defaultTheme.colors.white[0],
     linkColor: defaultTheme.colors.blue[0],
     backgroundColor: defaultTheme.colors.white[0],
+    backgroundColorInverted: defaultTheme.colors.black[0],
 }
 
 export const invertedTheme = {
     ...defaultTheme,
     fontColor: defaultTheme.colors.white[0],
+    fontColorInverted: defaultTheme.colors.black[0],
     linkColor: defaultTheme.colors.blue[0],
     backgroundColor: defaultTheme.colors.black[0],
+    backgroundColorInverted: defaultTheme.colors.white[0],
 }
 
 export default defaultTheme
