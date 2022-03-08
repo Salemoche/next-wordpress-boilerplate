@@ -12,6 +12,9 @@ import { v4 as uuidv4 } from 'uuid';
 import GalleryComponent from '../components/wp-blocks/gallery/gallery.component';
 import SliderComponent from '../components/wp-blocks/slider/slider.component';
 
+// Animation
+import { motion } from 'framer-motion';
+
 export const getWordpressImage = ( imageNode, size ) => {
     
     if ( !imageNode ) return null;

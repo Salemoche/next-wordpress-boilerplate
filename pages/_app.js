@@ -52,10 +52,13 @@ function MyApp({ Component, pageProps }) {
             setShowCookieNotice(false);
         }
 
+        // removeCookie('bs-agrees-to-cookies');
+
     }, [cookies])
     
 
     const handleCookieNotice = ( accepted ) => {
+        // setCookie('bs-agrees-to-cookies', accepted ? 'true' : 'false', { maxAge: 10 });
         setCookie('bs-agrees-to-cookies', accepted ? 'true' : 'false', { maxAge: 60 * 60 * 24 /*hours*/ });
     }
 
@@ -137,7 +140,7 @@ function MyApp({ Component, pageProps }) {
         <ThemeProvider theme={ theme }>
         {/* <ThemeProvider theme={{ mode: 'dark' }}> */}
             <GlobalStyles/>
-            <AnimatePresence>
+            {/* <AnimatePresence>
                 { showLoading &&
                 <motion.div
                     key="bs-loading"
@@ -149,16 +152,26 @@ function MyApp({ Component, pageProps }) {
                     <LoadingComponent/>
                 </motion.div>
                 }
-            </AnimatePresence>
+            </AnimatePresence> */}
             <AnimatePresence 
                 exitBeforeEnter={true}
                 initial={false}
             >
                 <Component {...pageProps} key={router.route}/>
             </AnimatePresence>
+            <AnimatePresence>
             { showCookieNotice && 
-                <CookieNotice handleClick={ handleCookieNotice } />
+                <motion.div
+                    key="bs-loading"
+                    initial={{ opacity: 1 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: .3 }}
+                >
+                    <CookieNotice key={ 'cookie-notice' } handleClick={ handleCookieNotice } />
+                </motion.div>
             }
+            </AnimatePresence>
             { false &&
                 <motion.div
                     drag

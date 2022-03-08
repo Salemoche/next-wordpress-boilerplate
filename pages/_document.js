@@ -35,7 +35,7 @@ export default class MyDocument extends Document {
 
     render() {
         return (
-            <Html id="next-html">
+            <Html id="next-html" lang="en">
             <Head />
             <body>
                 <Main />
