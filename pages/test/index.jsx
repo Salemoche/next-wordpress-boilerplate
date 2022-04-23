@@ -91,8 +91,8 @@ export default function TestPage({
 
 export const getStaticProps = async() => {
 
-    const baseUrl = process.env.BASE_URL;
-    const siteName = process.env.SITE_NAME;
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+    const siteName = process.env.NEXT_PUBLIC_SITE_NAME;
 
     const result = await apolloClient.query({
         query: PAGE_QUERY()

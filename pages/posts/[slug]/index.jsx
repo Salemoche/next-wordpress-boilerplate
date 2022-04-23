@@ -59,8 +59,8 @@ export default ProjectPage
 
 export const getStaticProps = async ( context ) => {
 
-    const baseUrl = process.env.BASE_URL;
-    const siteName = process.env.SITE_NAME;
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+    const siteName = process.env.NEXT_PUBLIC_SITE_NAME;
     const slug = context.params.slug
 
     const result = await apolloClient

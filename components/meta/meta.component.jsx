@@ -14,7 +14,7 @@ const MetaComponent = ({ headerTags }) => {
             {/* <meta property="og:locale" content="en_GB" /> */}
             <meta property="og:title" content={`${siteName || ''} ${ !!title && `– ${ title }` }`} />
             <meta property="og:description" content={ description } />
-            <meta property="og:site_name" content={ siteName || '' } />
+            <meta property="og:NEXT_PUBLIC_SITE_NAME" content={ siteName || '' } />
             <meta name="og:image" content={ imageUrl } />
             <meta property="og:url" content={ url } />
             {/* <meta property="og:type" content="article" /> */}

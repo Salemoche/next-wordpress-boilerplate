@@ -7,6 +7,6 @@ import {
 } from "@apollo/client";
 
 export const apolloClient = new ApolloClient({
-    uri: "https://default.bachstein.ch/graphql",
+    uri: `${process.env.NEXT_PUBLIC_NEXT_PUBLIC_WP_URL}graphql`,
     cache: new InMemoryCache()
 });
