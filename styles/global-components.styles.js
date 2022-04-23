@@ -5,6 +5,7 @@ export const ContentStyles = styled('div')`
     display: block;
     margin: 0 auto;
     max-width: 100vw;
+    margin-top: ${ props => props.theme.spaceL }px;
 
     > * {
         width: ${ props => props.theme.contentWidthL }px;

@@ -140,7 +140,7 @@ function MyApp({ Component, pageProps }) {
         <ThemeProvider theme={ theme }>
         {/* <ThemeProvider theme={{ mode: 'dark' }}> */}
             <GlobalStyles/>
-            {/* <AnimatePresence>
+            <AnimatePresence>
                 { showLoading &&
                 <motion.div
                     key="bs-loading"
@@ -152,7 +152,7 @@ function MyApp({ Component, pageProps }) {
                     <LoadingComponent/>
                 </motion.div>
                 }
-            </AnimatePresence> */}
+            </AnimatePresence>
             <AnimatePresence 
                 exitBeforeEnter={true}
                 initial={false}

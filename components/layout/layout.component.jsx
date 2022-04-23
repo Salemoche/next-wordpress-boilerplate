@@ -29,14 +29,14 @@ const LayoutComponent = ({
     const [mainStyle, setMainStyle] = useState({})
     const headerTags = useSiteHeader( baseUrl, siteName, content );
 
-    useEffect(() => {
-        if ( !window ) return
-        const topSpacing = deviceDetector.size === 'medium'|| deviceDetector.size === 'small' || deviceDetector.size === 'extra-small' ? 0 : headerHeight;
-        setMainStyle({
-            marginTop: topSpacing,
-            minHeight: window.innerHeight - topSpacing - footerHeight + 'px'
-        })
-    }, [ footerHeight, headerHeight, deviceDetector ])
+    // useEffect(() => {
+    //     if ( !window ) return
+    //     const topSpacing = deviceDetector.size === 'medium'|| deviceDetector.size === 'small' || deviceDetector.size === 'extra-small' ? 0 : headerHeight;
+    //     setMainStyle({
+    //         marginTop: topSpacing,
+    //         minHeight: window.innerHeight - topSpacing - footerHeight + 'px'
+    //     })
+    // }, [ footerHeight, headerHeight, deviceDetector ])
 
     return (
         <>
